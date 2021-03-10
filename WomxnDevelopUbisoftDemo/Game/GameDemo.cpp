@@ -56,6 +56,7 @@ void GameDemo::RenderDebugMenu(sf::RenderTarget& target)
 {
     ImGui::Begin("Debug Menu");
     ImGui::Text("Press F1 to close this debug menu");
+    ImGui::Text("Hello");
     ImGui::NewLine();
 
     if (ImGui::CollapsingHeader("Main character position"))
