@@ -97,18 +97,18 @@ void MainCharacter::Update(float deltaTime)
             m_Velocity.x *= SLOWDOWN_RATE;
         }
 
-        //if (Keyboard::isKeyPressed(Keyboard::Down))
-        //{
-        //    m_Velocity.y = fmin(m_Velocity.y + SPEED_INC, SPEED_MAX);
-        //}
-        //else if (Keyboard::isKeyPressed(Keyboard::Up))
-        //{
-        //    m_Velocity.y = fmax(m_Velocity.y - SPEED_INC, -SPEED_MAX);
-        //}
-        /*else
+        if (Keyboard::isKeyPressed(Keyboard::Down))
+        {
+            m_Velocity.y = fmin(m_Velocity.y + SPEED_INC, SPEED_MAX);
+        }
+        else if (Keyboard::isKeyPressed(Keyboard::Up))
+        {
+            m_Velocity.y = fmax(m_Velocity.y - SPEED_INC, -SPEED_MAX);
+        }
+        else
         {
             m_Velocity.y *= SLOWDOWN_RATE;
-        }*/
+        }
 
         if (Keyboard::isKeyPressed(Keyboard::Space))
         {
