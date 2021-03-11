@@ -24,6 +24,7 @@ void GameDemo::Update(float deltaTime)
 {
     m_MainCharacter.jump();
     m_MainCharacter.Update(deltaTime);
+   
 }
 
 void GameDemo::Render(sf::RenderTarget& target)

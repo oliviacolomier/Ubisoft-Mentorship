@@ -89,21 +89,17 @@ void MainCharacter::Update(float deltaTime)
             m_Velocity.x = fmin(m_Velocity.x + SPEED_INC, SPEED_MAX);
         }
         else if (Keyboard::isKeyPressed(Keyboard::A))
-        {
             m_Velocity.x = fmax(m_Velocity.x - SPEED_INC, -SPEED_MAX);
-        }
+        
         else
         {
             m_Velocity.x *= SLOWDOWN_RATE;
         }
 
-//******************** JUMP CODE GOES HERE **********************************************
         if (Keyboard::isKeyPressed(Keyboard::Space))  //get space to equal jump
-            m_Velocity.y = -10;
+            m_Velocity.y = -jumpspeed;
 
     }
-
-//****************************************************************************************
 
     m_Position += m_Velocity * deltaTime;
     m_Sprite.setPosition(m_Position);
@@ -118,11 +114,6 @@ void MainCharacter::draw(sf::RenderTarget& target, sf::RenderStates states) cons
 
 void MainCharacter::jump()
 {
-    //set vectors to these values
-
-    m_Acceleration.x = 0;
-    m_Acceleration.y = 0;
-
     if (m_Position.y < 500)
         m_Velocity.y += gravity;
 
@@ -133,9 +124,10 @@ void MainCharacter::jump()
         m_Velocity.x += m_Acceleration.x;
         m_Velocity.y += m_Acceleration.y;
 
-        m_Position.x += m_Velocity.x;
-        m_Position.y += m_Velocity.y;
+        //m_Position.x += m_Velocity.x;
+        //m_Position.y += m_Velocity.y;
     }
+
 }
 
 void MainCharacter::StartEndGame()
