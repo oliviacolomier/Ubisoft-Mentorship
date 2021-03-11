@@ -24,7 +24,7 @@ private:
 	sf::Vector2f m_Velocity{ sf::Vector2f(0,0) };
 	sf::Vector2f m_Acceleration{ sf::Vector2f(0,0) };
 	const float gravity = 2;
-	float jumpspeed = 10.0f;
+	float jumpspeed = 100.0f;
 
 	bool m_IsPlayingEndGame;
 };

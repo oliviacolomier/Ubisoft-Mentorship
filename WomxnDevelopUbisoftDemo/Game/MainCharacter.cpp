@@ -59,6 +59,7 @@ void MainCharacter::Update(float deltaTime)
     const float SPEED_INC = 10.0f;
     const float DEAD_ZONE = 5.0f;
     const float SLOWDOWN_RATE = 0.9f;
+    const float DROP_RATE = 1.0f;
 
     if (m_IsUsingJoystick)
     {
@@ -97,7 +98,13 @@ void MainCharacter::Update(float deltaTime)
         }
 
         if (Keyboard::isKeyPressed(Keyboard::Space))  //get space to equal jump
+        {
             m_Velocity.y = -jumpspeed;
+        }
+        else
+        {
+            m_Velocity.y *= DROP_RATE;
+        }
 
     }
 
