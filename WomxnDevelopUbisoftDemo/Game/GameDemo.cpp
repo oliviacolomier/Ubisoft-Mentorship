@@ -45,6 +45,7 @@ void GameDemo::Render(sf::RenderTarget& target)
     target.clear(sf::Color(0, 0, 0));
     target.draw(m_Door);
     target.draw(m_MainCharacter);
+    target.draw(sideCharacter);
 
     if (m_IsFinished)
     {
