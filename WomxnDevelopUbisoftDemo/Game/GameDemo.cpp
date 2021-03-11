@@ -22,6 +22,7 @@ GameDemo::GameDemo()
 
 void GameDemo::Update(float deltaTime)
 {
+    m_MainCharacter.jump();
     m_MainCharacter.Update(deltaTime);
 }
 

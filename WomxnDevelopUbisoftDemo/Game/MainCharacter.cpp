@@ -99,21 +99,8 @@ void MainCharacter::Update(float deltaTime)
 
 //******************** JUMP CODE GOES HERE **********************************************
         if (Keyboard::isKeyPressed(Keyboard::Space))  //get space to equal jump
-        {
-            if (!m_WasButtonPressed)
-            {
-                m_Sprite.setScale(0.8f, 0.8f);
-                m_WasButtonPressed = true;
-            }
-        }
-        else
-        {
-            if (m_WasButtonPressed)
-            {
-                m_Sprite.setScale(1.0f, 1.0f);
-                m_WasButtonPressed = false;
-            }
-        }
+            m_Velocity.y = -10;
+
     }
 
 //****************************************************************************************
@@ -127,6 +114,28 @@ void MainCharacter::Update(float deltaTime)
 void MainCharacter::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
     target.draw(m_Sprite);
+}
+
+void MainCharacter::jump()
+{
+    //set vectors to these values
+
+    m_Acceleration.x = 0;
+    m_Acceleration.y = 0;
+
+    if (m_Position.y < 500)
+        m_Velocity.y += gravity;
+
+    else if (m_Position.y > 500)
+    {
+        m_Position.y = 500;
+
+        m_Velocity.x += m_Acceleration.x;
+        m_Velocity.y += m_Acceleration.y;
+
+        m_Position.x += m_Velocity.x;
+        m_Position.y += m_Velocity.y;
+    }
 }
 
 void MainCharacter::StartEndGame()
