@@ -3,7 +3,7 @@
 
 GameDemo::GameDemo()
     : Game{ "Game Demo" }
-    , m_Door{ 900, 600, 100, 200 }
+
     , m_MainCharacter{}
     , m_IsFinished{ false }
 {
@@ -23,29 +23,13 @@ GameDemo::GameDemo()
 void GameDemo::Update(float deltaTime)
 {
     m_MainCharacter.Update(deltaTime);
-    m_Door.Update(deltaTime);
-
-    if (!m_IsFinished)
-    {
-        //if (m_Door.IsColliding(m_MainCharacter))
-        //if (m_Door.Contains(m_MainCharacter.GetCenter()))
-        if (m_Door.Contains(m_MainCharacter))
-        {
-            m_EndgameSound.play();
-
-            m_MainCharacter.StartEndGame();
-            m_Door.StartEndGame();
-            m_IsFinished = true;
-        }
-    }
 }
 
 void GameDemo::Render(sf::RenderTarget& target)
 {
     target.clear(sf::Color(0, 0, 0));
-    target.draw(m_Door);
+   
     target.draw(m_MainCharacter);
-    target.draw(sideCharacter);
 
     if (m_IsFinished)
     {
@@ -57,7 +41,6 @@ void GameDemo::RenderDebugMenu(sf::RenderTarget& target)
 {
     ImGui::Begin("Debug Menu");
     ImGui::Text("Press F1 to close this debug menu");
-    ImGui::Text("Hello");
     ImGui::NewLine();
 
     if (ImGui::CollapsingHeader("Main character position"))

@@ -1,9 +1,8 @@
 #pragma once
 
 #include <Engine/Game.h>
-#include <Game/Door.h>
 #include <Game/MainCharacter.h>
-#include <Game/SideCharacter.h>
+
 
 class GameDemo : public Game
 {
@@ -19,8 +18,7 @@ private:
     sf::Text m_EndgameText;
     sf::SoundBuffer m_EndgameSoundBuffer;
     sf::Sound m_EndgameSound;
-    Door m_Door;
     MainCharacter m_MainCharacter;
-    SideCharacter sideCharacter;
+   
     bool m_IsFinished;
 };
