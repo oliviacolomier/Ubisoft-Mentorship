@@ -63,6 +63,8 @@ void MainCharacter::Update(float deltaTime)
     const float SLOWDOWN_RATE = 0.9f;
     const float DROP_RATE = 1.0f;
 
+
+
     if (m_IsUsingJoystick)
     {
         m_Velocity.x = GetScaledAxis(m_JoystickIndex, Joystick::Axis::X, DEAD_ZONE, SPEED_MAX);
@@ -99,9 +101,9 @@ void MainCharacter::Update(float deltaTime)
             m_Velocity.x *= SLOWDOWN_RATE;
         }
 
-        if (Keyboard::isKeyPressed(Keyboard::Space))  //get space to equal jump
+        if (!isJumping && Keyboard::isKeyPressed(Keyboard::Space))  //get space to equal jump
         {
-            m_Velocity.y = -jumpspeed;
+            m_Velocity.y = -sqrtf(2.0f * 981.0f * jumpHeight);
         }
         else
         {
@@ -109,7 +111,7 @@ void MainCharacter::Update(float deltaTime)
         }
 
     }
-
+    
     m_Position += m_Velocity * deltaTime;
     m_Sprite.setPosition(m_Position);
     SetCenter(m_Position);
@@ -124,9 +126,18 @@ void MainCharacter::draw(sf::RenderTarget& target, sf::RenderStates states) cons
 
 void MainCharacter::jump()
 {
+    if (m_Position.y >= 500.0f)
+    {
+        isJumping = false;
+    }
+    else
+    {
+        isJumping = true;
+    }
+
     if (m_Position.y < 500)
         m_Velocity.y += gravity;
-
+    
     else if (m_Position.y > 500)
     {
         m_Position.y = 500;
@@ -134,8 +145,6 @@ void MainCharacter::jump()
         m_Velocity.x += m_Acceleration.x;
         m_Velocity.y += m_Acceleration.y;
 
-        //m_Position.x += m_Velocity.x;
-        //m_Position.y += m_Velocity.y;
     }
 
 }
