@@ -32,6 +32,10 @@
     <ClCompile Include="Engine\Collision.cpp">
       <Filter>Game\Engine</Filter>
     </ClCompile>
+    <ClCompile Include="Camera.cpp">
+      <Filter>Game\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="AssetManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h" />
@@ -56,6 +60,10 @@
     <ClInclude Include="Engine\Collision.h">
       <Filter>Game\Engine</Filter>
     </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>Game\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="AssetManager.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Game">

@@ -12,9 +12,12 @@ public:
 	void jump();
 	void StartEndGame();
 
+	
+
 private:
 	sf::Texture m_Texture;
 	sf::Sprite m_Sprite;
+	
 
 	bool m_IsUsingJoystick;
 	unsigned int m_JoystickIndex;

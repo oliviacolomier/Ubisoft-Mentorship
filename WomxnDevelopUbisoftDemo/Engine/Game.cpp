@@ -2,12 +2,13 @@
 #include <Engine/Game.h>
 
 
+
 static constexpr float APP_MAX_FRAMERATE{ 60.0f };
 static const sf::Vector2u APP_INIT_WINDOW_SIZE{ 1024, 768 };
 
-Game::Game(const char* windowTitle)
+Game::Game(const char* windowTitle) //creates window
     : m_Window{ sf::VideoMode(APP_INIT_WINDOW_SIZE.x, APP_INIT_WINDOW_SIZE.y), windowTitle, sf::Style::Titlebar | sf::Style::Close }
-{
+{   
     m_Window.setVerticalSyncEnabled(true);
     m_Window.setFramerateLimit(static_cast<uint32_t>(APP_MAX_FRAMERATE));
     m_Window.setActive();
@@ -25,7 +26,7 @@ void Game::RunGameLoop()
     sf::Clock clock;
 
     bool toggleImGui = true;
-
+  
     while (m_Window.isOpen())
     {
         clock.restart();
@@ -62,7 +63,6 @@ void Game::RunGameLoop()
         }
 
         ImGui::SFML::Update(m_Window, clock.restart());
-
         Update(deltaTime);
         Render(m_Window);
         RenderDebugMenu(m_Window);

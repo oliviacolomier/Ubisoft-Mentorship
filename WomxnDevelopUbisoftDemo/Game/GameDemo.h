@@ -2,9 +2,10 @@
 
 #include <Engine/Game.h>
 #include <Game/MainCharacter.h>
+#include <Camera.h>
 
 
-class GameDemo : public Game
+class GameDemo :  public Game, public Camera //inheritance
 {
 public:
     GameDemo();
@@ -12,6 +13,8 @@ public:
     void Update(float deltaTime) override;
     void Render(sf::RenderTarget& target) override;
     void RenderDebugMenu(sf::RenderTarget& target) override;
+   
+   
 
 private:
     sf::Font m_EndgameTextFont;
@@ -19,6 +22,8 @@ private:
     sf::SoundBuffer m_EndgameSoundBuffer;
     sf::Sound m_EndgameSound;
     MainCharacter m_MainCharacter;
+
+    
    
     bool m_IsFinished;
 };

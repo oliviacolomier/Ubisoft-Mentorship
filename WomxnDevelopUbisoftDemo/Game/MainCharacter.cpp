@@ -1,5 +1,7 @@
 #include <stdafx.h>
 #include <Game/MainCharacter.h>
+#include <AssetManager.h>
+
 
 using namespace sf;
 
@@ -37,11 +39,10 @@ MainCharacter::MainCharacter()
     m_Texture.loadFromFile(".\\Assets\\red_ball.bmp"); //sprite image
 
     const sf::Vector2f size(static_cast<float>(m_Texture.getSize().x), static_cast<float>(m_Texture.getSize().y));
-
+    //Sprite m_Sprite = Sprite(AssetManager::GetTexture(".\\Assets\\red_ball.bmp"));
     m_Sprite.setTexture(m_Texture); //set sprite texture
     m_Sprite.setOrigin(size * 0.5f); //set origin for sprite
     m_Sprite.setPosition(m_Position); //set position for sprite
-
     SetBoundingBox(m_Position, size);
 
     m_IsUsingJoystick = GetFirstJoystickIndex(m_JoystickIndex);

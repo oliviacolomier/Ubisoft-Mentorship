@@ -1,9 +1,10 @@
 #include "stdafx.h"
 #include "GameDemo.h"
 
-GameDemo::GameDemo()
-    : Game{ "Game Demo" }
 
+//where window is created - constructor//
+GameDemo::GameDemo(): Game{ "Game Demo" }
+//end of constructor//
     , m_MainCharacter{}
     , m_IsFinished{ false }
 {
@@ -22,21 +23,26 @@ GameDemo::GameDemo()
 
 void GameDemo::Update(float deltaTime)
 {
+  
     m_MainCharacter.jump();
     m_MainCharacter.Update(deltaTime);
    
 }
 
-void GameDemo::Render(sf::RenderTarget& target)
+void GameDemo::Render(sf::RenderTarget& target) //only rendering target?? no the window??
 {
-    target.clear(sf::Color(0, 0, 0));
-   
-    target.draw(m_MainCharacter);
+    Camera::Render(target);
+    //const auto& main_position = m_MainCharacter.GetCenter();
+   // sf::View view(sf::Vector2f(0.0f, 0.0f), sf::Vector2f(512.0f, 512.0f));
+   // view.setCenter(main_position);
+   // target.clear(sf::Color(0, 0, 0));
+   //target.setView(view);
+  // target.draw(m_MainCharacter);
 
-    if (m_IsFinished)
-    {
-        target.draw(m_EndgameText);
-    }
+    //if (m_IsFinished)
+    //{
+       // target.draw(m_EndgameText);
+    //}
 }
 
 void GameDemo::RenderDebugMenu(sf::RenderTarget& target)
@@ -47,8 +53,8 @@ void GameDemo::RenderDebugMenu(sf::RenderTarget& target)
 
     if (ImGui::CollapsingHeader("Main character position"))
     {
+        
         const auto& mainCharCenterPos = m_MainCharacter.GetCenter();
-
         ImGui::Text("X: %f", mainCharCenterPos.x);
         ImGui::Text("Y: %f", mainCharCenterPos.y);
     }
