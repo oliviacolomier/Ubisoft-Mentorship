@@ -135,13 +135,12 @@ void MainCharacter::jump()
         isJumping = true;
     }
 
-    if (m_Position.y < 500)
+    if (m_Position.y < 500.0f)
         m_Velocity.y += gravity;
     
-    else if (m_Position.y > 500)
+    else if (m_Position.y > 500.0f)
     {
-        m_Position.y = 500;
-
+        m_Position.y = 500.0f;
         m_Velocity.x += m_Acceleration.x;
         m_Velocity.y += m_Acceleration.y;
 

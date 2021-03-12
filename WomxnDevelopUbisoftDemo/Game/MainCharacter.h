@@ -28,6 +28,7 @@ private:
 	sf::Vector2f m_Acceleration{ sf::Vector2f(0,0) };
 	const float gravity = 4;
 	bool isJumping;
+
 	float jumpHeight = 20.0f;
 
 	bool m_IsPlayingEndGame;
