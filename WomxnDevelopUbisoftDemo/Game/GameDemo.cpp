@@ -37,7 +37,8 @@ void GameDemo::Render(sf::RenderTarget& target)
 
     Camera::Render(target);
     
-   target.draw(m_MainCharacter);
+    target.draw(sideCharacter);
+    target.draw(m_MainCharacter);
     
 
     if (m_IsFinished)

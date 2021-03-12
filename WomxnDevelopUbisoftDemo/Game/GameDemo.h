@@ -2,6 +2,7 @@
 
 #include <Engine/Game.h>
 #include <Game/MainCharacter.h>
+#include <Game/SideCharacter.h>
 #include <Camera.h>
 
 
@@ -22,6 +23,7 @@ private:
     sf::SoundBuffer m_EndgameSoundBuffer;
     sf::Sound m_EndgameSound;
     MainCharacter m_MainCharacter;
+    SideCharacter sideCharacter;
    
 
     
