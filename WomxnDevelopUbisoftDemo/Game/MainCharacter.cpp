@@ -1,5 +1,6 @@
 #include <stdafx.h>
 #include <Game/MainCharacter.h>
+#include <Camera.h>
 #include <AssetManager.h>
 
 
@@ -115,9 +116,10 @@ void MainCharacter::Update(float deltaTime)
 }
 
 
-void MainCharacter::draw(sf::RenderTarget& target, sf::RenderStates states) const
+void MainCharacter::draw(sf::RenderTarget& target, sf::RenderStates states) const //draws object to the render target
 {
     target.draw(m_Sprite);
+    
 }
 
 void MainCharacter::jump()

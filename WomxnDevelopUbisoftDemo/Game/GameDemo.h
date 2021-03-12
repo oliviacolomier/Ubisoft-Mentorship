@@ -22,6 +22,7 @@ private:
     sf::SoundBuffer m_EndgameSoundBuffer;
     sf::Sound m_EndgameSound;
     MainCharacter m_MainCharacter;
+   
 
     
    

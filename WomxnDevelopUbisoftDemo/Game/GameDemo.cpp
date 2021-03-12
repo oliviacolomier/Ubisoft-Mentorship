@@ -8,6 +8,7 @@ GameDemo::GameDemo(): Game{ "Game Demo" }
     , m_MainCharacter{}
     , m_IsFinished{ false }
 {
+    
     m_EndgameTextFont.loadFromFile("Assets\\arial.ttf");
 
     m_EndgameText.setFont(m_EndgameTextFont);
@@ -29,20 +30,21 @@ void GameDemo::Update(float deltaTime)
    
 }
 
-void GameDemo::Render(sf::RenderTarget& target) //only rendering target?? no the window??
+void GameDemo::Render(sf::RenderTarget& target) 
 {
-    Camera::Render(target);
-    //const auto& main_position = m_MainCharacter.GetCenter();
-   // sf::View view(sf::Vector2f(0.0f, 0.0f), sf::Vector2f(512.0f, 512.0f));
-   // view.setCenter(main_position);
-   // target.clear(sf::Color(0, 0, 0));
-   //target.setView(view);
-  // target.draw(m_MainCharacter);
+    
+    target.clear(sf::Color(0, 0, 0));
 
-    //if (m_IsFinished)
-    //{
-       // target.draw(m_EndgameText);
-    //}
+    Camera::Render(target);
+    
+   target.draw(m_MainCharacter);
+    
+
+    if (m_IsFinished)
+    {
+        target.draw(m_EndgameText);
+    }
+
 }
 
 void GameDemo::RenderDebugMenu(sf::RenderTarget& target)

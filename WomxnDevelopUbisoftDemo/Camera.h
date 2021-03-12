@@ -7,4 +7,5 @@ public:
 	virtual void Render(sf::RenderTarget& sprite_character);
 
 
+
 };
