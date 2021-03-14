@@ -23,21 +23,11 @@
     <ClCompile Include="Game\MainCharacter.cpp">
       <Filter>Game</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Game.cpp">
-      <Filter>Game\Engine</Filter>
-    </ClCompile>
-    <ClCompile Include="Game\GameDemo.cpp">
-      <Filter>Game</Filter>
-    </ClCompile>
     <ClCompile Include="Engine\Collision.cpp">
       <Filter>Game\Engine</Filter>
     </ClCompile>
     <ClCompile Include="Camera.cpp">
       <Filter>Game\Engine</Filter>
-    </ClCompile>
-    <ClCompile Include="AssetManager.cpp" />
-    <ClCompile Include="Game\SideCharacter.cpp">
-      <Filter>Game</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -54,21 +44,11 @@
     <ClInclude Include="Game\MainCharacter.h">
       <Filter>Game</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Game.h">
-      <Filter>Game\Engine</Filter>
-    </ClInclude>
-    <ClInclude Include="Game\GameDemo.h">
-      <Filter>Game</Filter>
-    </ClInclude>
     <ClInclude Include="Engine\Collision.h">
       <Filter>Game\Engine</Filter>
     </ClInclude>
     <ClInclude Include="Camera.h">
       <Filter>Game\Engine</Filter>
-    </ClInclude>
-    <ClInclude Include="AssetManager.h" />
-    <ClInclude Include="Game\SideCharacter.h">
-      <Filter>Game</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

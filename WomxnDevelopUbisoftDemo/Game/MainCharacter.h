@@ -1,23 +1,23 @@
 #pragma once
+#include <Camera.h>
 
 
-class MainCharacter : public sf::Drawable, public BoxCollideable
+
+class MainCharacter : public BoxCollideable, public Camera
 {
 public:	
 	MainCharacter();
 
 	void Update(float deltaTime);
-	void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
+	void draw();//sf::RenderTarget& target, sf::RenderStates states) const override;
 
 	void jump();
 	void StartEndGame();
+	
 
 	
 
 private:
-	sf::Texture m_Texture;
-	sf::Sprite m_Sprite;
-	
 
 	bool m_IsUsingJoystick;
 	unsigned int m_JoystickIndex;

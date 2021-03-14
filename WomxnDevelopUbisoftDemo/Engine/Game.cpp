@@ -73,7 +73,7 @@ void Game::RunGameLoop()
             ImGui::SFML::Render(m_Window);
         }
 
-        m_Window.display();
+        m_Window.display(); 
 
         deltaTime = clock.getElapsedTime().asSeconds();
     }
