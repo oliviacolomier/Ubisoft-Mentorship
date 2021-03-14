@@ -1,6 +1,6 @@
 #pragma once
 
-class SideCharacter: public sf::Drawable
+class SideCharacter: public sf::Drawable, public BoxCollideable
 {
 
 public:

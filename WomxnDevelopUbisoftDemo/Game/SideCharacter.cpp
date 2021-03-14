@@ -11,6 +11,7 @@ SideCharacter::SideCharacter()
 	sideSprite.setTexture(sideTexture);
 	sideSprite.setOrigin(size * 0.5f);
 	sideSprite.setPosition(sidePosition);
+	SetBoundingBox(sidePosition, size);
 
 }
 

@@ -25,7 +25,10 @@ GameDemo::GameDemo(): Game{ "Game Demo" }
 void GameDemo::Update(float deltaTime)
 {
   
-    
+    if (m_MainCharacter.IsColliding(sideCharacter))
+    {
+        printf("yes");
+    }
     m_MainCharacter.Update(deltaTime);
     m_MainCharacter.jump();
    
