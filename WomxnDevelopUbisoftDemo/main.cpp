@@ -13,22 +13,19 @@ int main()
             sf::Event event;
             while (m_Window.pollEvent(event))
             {
-                switch (event.type)
-                {
-                case sf::Event::Closed:
-                {
+                if (event.type == sf::Event::EventType::Closed)
                     m_Window.close();
-                    break;
-                }
-                case sf::Event::KeyPressed:
-                {
-                    if (event.key.code == sf::Keyboard::Escape)
-                    {
-                        m_Window.close();
-                    }
-
-                }
             }
+           //Update the scene
+
+            //Render Cycle
+            m_Window.clear(sf::Color::Black);
+
+            //render the objects
+
+            m_Window.display();
+
+
      }
 	return 0;
 }
