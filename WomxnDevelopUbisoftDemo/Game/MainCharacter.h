@@ -1,7 +1,8 @@
 #pragma once
 
 
-class MainCharacter : public sf::Drawable, public BoxCollideable
+
+class MainCharacter : public sf::Drawable, public BoxCollideable, public TextureHolder
 {
 public:	
 	MainCharacter();
@@ -14,6 +15,7 @@ public:
 private:
 	sf::Texture m_Texture;
 	sf::Sprite m_Sprite;
+	TextureHolder textures;
 
 	bool m_IsUsingJoystick;
 	unsigned int m_JoystickIndex;

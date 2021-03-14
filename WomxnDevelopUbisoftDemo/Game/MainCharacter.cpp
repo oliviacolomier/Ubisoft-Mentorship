@@ -1,9 +1,11 @@
 #include <stdafx.h>
 #include <Game/MainCharacter.h>
+#include <TextureHolder.h>
 
 using namespace sf;
 
 // Joystick helpers
+
 namespace
 {
     bool GetFirstJoystickIndex(unsigned int& index)
@@ -34,11 +36,11 @@ namespace
 MainCharacter::MainCharacter()
     : m_IsPlayingEndGame(false), m_Position(250.0f, 250.0f), m_IsUsingJoystick(false), m_JoystickIndex(0), m_WasButtonPressed(false)
 {
-    m_Texture.loadFromFile(".\\Assets\\red_ball.bmp");
+    //load from texture holder
+    textures.load(Textures::MainCharacter, ".\\Assets\\red_ball.bmp");
 
     const sf::Vector2f size(static_cast<float>(m_Texture.getSize().x), static_cast<float>(m_Texture.getSize().y));
-
-    m_Sprite.setTexture(m_Texture);
+    m_Sprite.setTexture(textures.get(Textures::MainCharacter));
     m_Sprite.setOrigin(size * 0.5f);
     m_Sprite.setPosition(m_Position);
 

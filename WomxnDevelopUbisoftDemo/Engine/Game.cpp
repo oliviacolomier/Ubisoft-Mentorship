@@ -30,6 +30,8 @@ void Game::RunGameLoop()
     {
         clock.restart();
 
+        //****PROCESS*****
+
         sf::Event event;
         while (m_Window.pollEvent(event))
         {
@@ -61,9 +63,12 @@ void Game::RunGameLoop()
             ImGui::SFML::ProcessEvent(event);
         }
 
+        //****UPDATE****
         ImGui::SFML::Update(m_Window, clock.restart());
 
         Update(deltaTime);
+
+        //***RENDER****
         Render(m_Window);
         RenderDebugMenu(m_Window);
 
