@@ -35,7 +35,7 @@ private:
 	const float gravity = 4;
 	bool isJumping;
 
-	float jumpHeight = 20.0f;
+	float jumpHeight = 30.0f;
 
 	bool m_IsPlayingEndGame;
 };

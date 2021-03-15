@@ -2,6 +2,7 @@
 #include "GameDemo.h"
 
 
+
 //where window is created - constructor//
 GameDemo::GameDemo(): Game{ "Game Demo" }
 //end of constructor//
@@ -26,7 +27,7 @@ void GameDemo::Update(float deltaTime)
 {
  
     
-    if (m_MainCharacter.IsColliding(sideCharacter))
+    if (m_MainCharacter.IsColliding(platform))
     {
         printf("yes");
     }
@@ -38,10 +39,11 @@ void GameDemo::Update(float deltaTime)
 void GameDemo::Render(sf::RenderTarget& target) 
 {
     
-   
+    
     target.clear(sf::Color(0, 0, 0));
-    Camera::Render(target);
-    target.draw(sideCharacter);
+    
+    target.draw(create_world);
+    target.draw(platform);
 
     target.draw(m_MainCharacter);
     
@@ -72,9 +74,9 @@ void GameDemo::RenderDebugMenu(sf::RenderTarget& target)
     if (ImGui::CollapsingHeader("side character position"))
     {
 
-        const auto& sideCharCenterPos = sideCharacter.GetCenter();
-        ImGui::Text("X: %f", sideCharCenterPos.x);
-        ImGui::Text("Y: %f", sideCharCenterPos.y);
+        const auto& platformCenterPos = platform.GetCenter();
+        ImGui::Text("X: %f", platformCenterPos.x);
+        ImGui::Text("Y: %f", platformCenterPos.y);
     }
 
 

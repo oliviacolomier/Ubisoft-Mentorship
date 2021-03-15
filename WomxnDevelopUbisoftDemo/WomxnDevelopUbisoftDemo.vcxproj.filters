@@ -39,6 +39,7 @@
     <ClCompile Include="Game\Platforms.cpp">
       <Filter>Game</Filter>
     </ClCompile>
+    <ClCompile Include="World.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h" />
@@ -70,6 +71,7 @@
     <ClInclude Include="Game\Platforms.h">
       <Filter>Game</Filter>
     </ClInclude>
+    <ClInclude Include="World.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Game">

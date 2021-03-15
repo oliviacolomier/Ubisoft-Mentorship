@@ -16,7 +16,7 @@ public:
 
 	void StartEndGame();
 	sf::Vector2f platform_position;
-
+	
 	
 
 private:
