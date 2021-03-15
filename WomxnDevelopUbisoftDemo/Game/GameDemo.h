@@ -2,8 +2,9 @@
 
 #include <Engine/Game.h>
 #include <Game/MainCharacter.h>
-#include <Game/SideCharacter.h>
+#include <Game/Platforms.h>
 #include <Camera.h>
+#include <vector>
 
 
 class GameDemo :  public Game, public Camera //inheritance
@@ -14,6 +15,7 @@ public:
     void Update(float deltaTime) override;
     void Render(sf::RenderTarget& target) override;
     void RenderDebugMenu(sf::RenderTarget& target) override;
+  
    
    
 
@@ -23,7 +25,9 @@ private:
     sf::SoundBuffer m_EndgameSoundBuffer;
     sf::Sound m_EndgameSound;
     MainCharacter m_MainCharacter;
-    SideCharacter sideCharacter;
+    Platforms sideCharacter;
+    sf::Vector2f mainPosition;
+    sf::Vector2f sidePosition;
    
 
     

@@ -36,7 +36,7 @@
       <Filter>Game\Engine</Filter>
     </ClCompile>
     <ClCompile Include="AssetManager.cpp" />
-    <ClCompile Include="Game\SideCharacter.cpp">
+    <ClCompile Include="Game\Platforms.cpp">
       <Filter>Game</Filter>
     </ClCompile>
   </ItemGroup>
@@ -67,7 +67,7 @@
       <Filter>Game\Engine</Filter>
     </ClInclude>
     <ClInclude Include="AssetManager.h" />
-    <ClInclude Include="Game\SideCharacter.h">
+    <ClInclude Include="Game\Platforms.h">
       <Filter>Game</Filter>
     </ClInclude>
   </ItemGroup>

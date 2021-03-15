@@ -1,4 +1,5 @@
 #pragma once
+#include <Game/Platforms.h>
 
 
 class MainCharacter : public sf::Drawable, public BoxCollideable
@@ -7,16 +8,21 @@ public:
 	MainCharacter();
 
 	void Update(float deltaTime);
+
 	void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
 
 	void jump();
 	void StartEndGame();
+
+
 
 	
 
 private:
 	sf::Texture m_Texture;
 	sf::Sprite m_Sprite;
+	float groundHeight = 500.0f;
+
 	
 
 	bool m_IsUsingJoystick;

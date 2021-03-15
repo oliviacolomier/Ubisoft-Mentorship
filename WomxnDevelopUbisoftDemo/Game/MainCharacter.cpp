@@ -37,6 +37,7 @@ namespace
 MainCharacter::MainCharacter()
     : m_IsPlayingEndGame(false), m_Position(100.0f, 500.0f), m_IsUsingJoystick(false), m_JoystickIndex(0), m_WasButtonPressed(false)
 {
+
     m_Texture.loadFromFile(".\\Assets\\red_ball.bmp"); //sprite image
 
     const sf::Vector2f size(static_cast<float>(m_Texture.getSize().x), static_cast<float>(m_Texture.getSize().y));
@@ -46,6 +47,7 @@ MainCharacter::MainCharacter()
     m_Sprite.setPosition(m_Position); //set position for sprite
     SetBoundingBox(m_Position, size);
 
+    
     m_IsUsingJoystick = GetFirstJoystickIndex(m_JoystickIndex);
 }
 
@@ -126,7 +128,7 @@ void MainCharacter::draw(sf::RenderTarget& target, sf::RenderStates states) cons
 
 void MainCharacter::jump()
 {
-    if (m_Position.y >= 500.0f)
+    if (m_Position.y >= groundHeight)
     {
         isJumping = false;
     }
@@ -135,12 +137,12 @@ void MainCharacter::jump()
         isJumping = true;
     }
 
-    if (m_Position.y < 500.0f)
+    if (m_Position.y < groundHeight) 
         m_Velocity.y += gravity;
     
-    else if (m_Position.y > 500.0f)
+    else if (m_Position.y > groundHeight)
     {
-        m_Position.y = 500.0f;
+        m_Position.y = groundHeight;
         m_Velocity.x += m_Acceleration.x;
         m_Velocity.y += m_Acceleration.y;
 
@@ -152,3 +154,4 @@ void MainCharacter::StartEndGame()
 {
     m_IsPlayingEndGame = true;
 }
+

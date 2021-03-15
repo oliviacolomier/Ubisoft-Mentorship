@@ -24,7 +24,8 @@ GameDemo::GameDemo(): Game{ "Game Demo" }
 
 void GameDemo::Update(float deltaTime)
 {
-  
+ 
+    
     if (m_MainCharacter.IsColliding(sideCharacter))
     {
         printf("yes");
@@ -37,11 +38,11 @@ void GameDemo::Update(float deltaTime)
 void GameDemo::Render(sf::RenderTarget& target) 
 {
     
+   
     target.clear(sf::Color(0, 0, 0));
-
     Camera::Render(target);
-    
     target.draw(sideCharacter);
+
     target.draw(m_MainCharacter);
     
 
@@ -66,6 +67,17 @@ void GameDemo::RenderDebugMenu(sf::RenderTarget& target)
         ImGui::Text("Y: %f", mainCharCenterPos.y);
     }
 
+    ImGui::NewLine();
+
+    if (ImGui::CollapsingHeader("side character position"))
+    {
+
+        const auto& sideCharCenterPos = sideCharacter.GetCenter();
+        ImGui::Text("X: %f", sideCharCenterPos.x);
+        ImGui::Text("Y: %f", sideCharCenterPos.y);
+    }
+
+
     if (ImGui::CollapsingHeader("Game status"))
     {
         if (m_IsFinished)
@@ -80,3 +92,4 @@ void GameDemo::RenderDebugMenu(sf::RenderTarget& target)
 
     ImGui::End();
 }
+
