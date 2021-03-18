@@ -1,7 +1,7 @@
 #include <stdafx.h>
 #include <Game/MainCharacter.h>
 #include <Camera.h>
-#include <AssetManager.h>
+
 
 
 using namespace sf;
@@ -45,8 +45,11 @@ MainCharacter::MainCharacter()
     m_Sprite.setTexture(m_Texture); //set sprite texture
     m_Sprite.setOrigin(size * 0.5f); //set origin for sprite
     m_Sprite.setPosition(m_Position); //set position for sprite
+    
     SetBoundingBox(m_Position, size);
+    
 
+    //m_BoundingBox.left;
     
     m_IsUsingJoystick = GetFirstJoystickIndex(m_JoystickIndex);
 }
@@ -66,6 +69,7 @@ void MainCharacter::Update(float deltaTime)
     const float DROP_RATE = 1.0f;
 
 
+   
 
     if (m_IsUsingJoystick)
     {
@@ -113,10 +117,13 @@ void MainCharacter::Update(float deltaTime)
         }
 
     }
+
     
     m_Position += m_Velocity * deltaTime;
     m_Sprite.setPosition(m_Position);
     SetCenter(m_Position);
+
+   
 }
 
 
@@ -154,4 +161,8 @@ void MainCharacter::StartEndGame()
 {
     m_IsPlayingEndGame = true;
 }
+
+
+
+
 

@@ -52,4 +52,5 @@ protected:
     }
 
     sf::FloatRect m_BoundingBox;
+    
 };

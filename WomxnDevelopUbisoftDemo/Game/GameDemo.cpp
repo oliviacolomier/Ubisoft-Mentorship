@@ -1,57 +1,45 @@
 #include "stdafx.h"
+#include<iostream>
 #include "GameDemo.h"
 
 
 
 //where window is created - constructor//
-GameDemo::GameDemo(): Game{ "Game Demo" }
-//end of constructor//
-    , m_MainCharacter{}
-    , m_IsFinished{ false }
+GameDemo::GameDemo() : Game{ "Game Demo" }
 {
-    
-    m_EndgameTextFont.loadFromFile("Assets\\arial.ttf");
+    m_IsFinished = false;
+    m_world = new World(&m_character);
 
-    m_EndgameText.setFont(m_EndgameTextFont);
-    m_EndgameText.setPosition(500, 400);
-    m_EndgameText.setString("!!! WIN !!!");
-    m_EndgameText.setCharacterSize(24);
-    m_EndgameText.setFillColor(sf::Color::Red);
+  
+    m_world->CreatePlatform();//sf::Vector2f(500.0f, 300.0f), sf::Vector2f(100.0f, 100.0f));
+   
+   
 
-    m_EndgameSoundBuffer.loadFromFile("Assets\\Test.wav");
-
-    m_EndgameSound.setBuffer(m_EndgameSoundBuffer);
 }
 
 void GameDemo::Update(float deltaTime)
 {
- 
-    
-    if (m_MainCharacter.IsColliding(platform))
+    m_character.GetBoundingBox();
+    platform.GetBoundingBox();
+
+
+    if (m_character.IsColliding(platform))
     {
         printf("yes");
     }
-    m_MainCharacter.Update(deltaTime);
-    m_MainCharacter.jump();
+
+    m_character.Update(deltaTime);
+    m_character.jump();
    
 }
 
 void GameDemo::Render(sf::RenderTarget& target) 
 {
-    
-    
+
     target.clear(sf::Color(0, 0, 0));
-    
-    target.draw(create_world);
+    target.draw(*m_world);
     target.draw(platform);
-
-    target.draw(m_MainCharacter);
-    
-
-    if (m_IsFinished)
-    {
-        target.draw(m_EndgameText);
-    }
+    target.draw(m_character);
 
 }
 
@@ -64,21 +52,14 @@ void GameDemo::RenderDebugMenu(sf::RenderTarget& target)
     if (ImGui::CollapsingHeader("Main character position"))
     {
         
-        const auto& mainCharCenterPos = m_MainCharacter.GetCenter();
+        const auto& mainCharCenterPos = m_character.GetCenter();
         ImGui::Text("X: %f", mainCharCenterPos.x);
         ImGui::Text("Y: %f", mainCharCenterPos.y);
     }
 
     ImGui::NewLine();
 
-    if (ImGui::CollapsingHeader("side character position"))
-    {
-
-        const auto& platformCenterPos = platform.GetCenter();
-        ImGui::Text("X: %f", platformCenterPos.x);
-        ImGui::Text("Y: %f", platformCenterPos.y);
-    }
-
+  
 
     if (ImGui::CollapsingHeader("Game status"))
     {

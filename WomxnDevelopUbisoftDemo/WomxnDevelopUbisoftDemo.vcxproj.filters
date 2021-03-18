@@ -29,17 +29,16 @@
     <ClCompile Include="Game\GameDemo.cpp">
       <Filter>Game</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Collision.cpp">
-      <Filter>Game\Engine</Filter>
-    </ClCompile>
     <ClCompile Include="Camera.cpp">
       <Filter>Game\Engine</Filter>
     </ClCompile>
-    <ClCompile Include="AssetManager.cpp" />
     <ClCompile Include="Game\Platforms.cpp">
       <Filter>Game</Filter>
     </ClCompile>
     <ClCompile Include="World.cpp" />
+    <ClCompile Include="Engine\BoxCollision.cpp">
+      <Filter>Game\Engine</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h" />
@@ -61,17 +60,16 @@
     <ClInclude Include="Game\GameDemo.h">
       <Filter>Game</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Collision.h">
-      <Filter>Game\Engine</Filter>
-    </ClInclude>
     <ClInclude Include="Camera.h">
       <Filter>Game\Engine</Filter>
     </ClInclude>
-    <ClInclude Include="AssetManager.h" />
     <ClInclude Include="Game\Platforms.h">
       <Filter>Game</Filter>
     </ClInclude>
     <ClInclude Include="World.h" />
+    <ClInclude Include="Engine\BoxCollision.h">
+      <Filter>Game\Engine</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Game">
