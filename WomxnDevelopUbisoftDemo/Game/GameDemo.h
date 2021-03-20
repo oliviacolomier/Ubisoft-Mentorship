@@ -3,6 +3,7 @@
 #include <Engine/Game.h>
 #include <Game/Door.h>
 #include <Game/MainCharacter.h>
+#include <World.h>
 
 class GameDemo : public Game
 {
@@ -20,5 +21,6 @@ private:
     sf::Sound m_EndgameSound;
     Door m_Door;
     MainCharacter m_MainCharacter;
+    World m_World;
     bool m_IsFinished;
 };

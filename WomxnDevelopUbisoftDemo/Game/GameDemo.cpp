@@ -43,6 +43,7 @@ void GameDemo::Update(float deltaTime)
 void GameDemo::Render(sf::RenderTarget& target)
 {
     target.clear(sf::Color(0, 0, 0));
+    target.draw(m_World);
     target.draw(m_Door);
     target.draw(m_MainCharacter);
 

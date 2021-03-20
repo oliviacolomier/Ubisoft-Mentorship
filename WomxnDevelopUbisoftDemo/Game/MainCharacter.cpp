@@ -32,15 +32,17 @@ namespace
 
 
 MainCharacter::MainCharacter()
-    : m_IsPlayingEndGame(false), m_Position(250.0f, 250.0f), m_IsUsingJoystick(false), m_JoystickIndex(0), m_WasButtonPressed(false)
+    : m_IsPlayingEndGame(false), m_Position(360.0f, 190.0f), m_IsUsingJoystick(false), m_JoystickIndex(0), m_WasButtonPressed(false)
 {
-    m_Texture.loadFromFile(".\\Assets\\red_ball.bmp");
-
+    //rectSourceSprite = sf::IntRect(48, 0, 48, 48);
+    m_Texture.loadFromFile(".\\Assets\\tiger.bmp");
+  
     const sf::Vector2f size(static_cast<float>(m_Texture.getSize().x), static_cast<float>(m_Texture.getSize().y));
-
     m_Sprite.setTexture(m_Texture);
+   // m_Sprite.setTextureRect(rectSourceSprite);
     m_Sprite.setOrigin(size * 0.5f);
     m_Sprite.setPosition(m_Position);
+    m_Sprite.setScale(0.9f, 0.9f);
 
     SetBoundingBox(m_Position, size);
 
@@ -50,6 +52,7 @@ MainCharacter::MainCharacter()
 
 void MainCharacter::Update(float deltaTime)
 {
+ 
     if (m_IsPlayingEndGame)
     {
         return;
@@ -84,12 +87,15 @@ void MainCharacter::Update(float deltaTime)
     }
     else
     {
-        if (Keyboard::isKeyPressed(Keyboard::Right))
+        if (Keyboard::isKeyPressed(Keyboard::D))
         {
+            sourceY = Right;
             m_Velocity.x = fmin(m_Velocity.x + SPEED_INC, SPEED_MAX);
+            
         }
-        else if (Keyboard::isKeyPressed(Keyboard::Left))
+        else if (Keyboard::isKeyPressed(Keyboard::A))
         {
+            sourceY = Left;
             m_Velocity.x = fmax(m_Velocity.x - SPEED_INC, -SPEED_MAX);
         }
         else
@@ -97,37 +103,33 @@ void MainCharacter::Update(float deltaTime)
             m_Velocity.x *= SLOWDOWN_RATE;
         }
 
-        if (Keyboard::isKeyPressed(Keyboard::Down))
+        if (Keyboard::isKeyPressed(Keyboard::S))
         {
+            sourceY = Down;
             m_Velocity.y = fmin(m_Velocity.y + SPEED_INC, SPEED_MAX);
         }
-        else if (Keyboard::isKeyPressed(Keyboard::Up))
+        else if (Keyboard::isKeyPressed(Keyboard::W))
         {
+            sourceY = Up;
             m_Velocity.y = fmax(m_Velocity.y - SPEED_INC, -SPEED_MAX);
         }
         else
         {
             m_Velocity.y *= SLOWDOWN_RATE;
+            
         }
 
-        if (Keyboard::isKeyPressed(Keyboard::Space))
-        {
-            if (!m_WasButtonPressed)
-            {
-                m_Sprite.setScale(0.8f, 0.8f);
-                m_WasButtonPressed = true;
-            }
-        }
-        else
-        {
-            if (m_WasButtonPressed)
-            {
-                m_Sprite.setScale(1.0f, 1.0f);
-                m_WasButtonPressed = false;
-            }
-        }
     }
 
+    frameCounter += frameSpeed * clock.restart().asSeconds();
+    if (frameCounter >= switchFrame)
+    {
+        frameCounter = 0;
+        sourceX++;
+        if (sourceX * 48 >= m_Texture.getSize().x)
+            sourceX = 0;
+    }
+    m_Sprite.setTextureRect(sf::IntRect(sourceX * 48, sourceY * 50, 48, 48));
     m_Position += m_Velocity * deltaTime;
     m_Sprite.setPosition(m_Position);
     SetCenter(m_Position);
@@ -143,3 +145,4 @@ void MainCharacter::StartEndGame()
 {
     m_IsPlayingEndGame = true;
 }
+
