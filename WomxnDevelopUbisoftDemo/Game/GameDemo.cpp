@@ -9,25 +9,15 @@ GameDemo::GameDemo() : Game{ "Game Demo" }
 {
     m_IsFinished = false;
     m_world = new World(&m_character);
-
-  
     m_world->CreatePlatform();//sf::Vector2f(500.0f, 300.0f), sf::Vector2f(100.0f, 100.0f));
-   
    
 
 }
 
 void GameDemo::Update(float deltaTime)
 {
-    m_character.GetBoundingBox();
-    platform.GetBoundingBox();
-
-
-    if (m_character.IsColliding(platform))
-    {
-        printf("yes");
-    }
-
+ 
+    m_world->collide(&m_character, platform); //prints yes if the two collide
     m_character.Update(deltaTime);
     m_character.jump();
    

@@ -17,7 +17,6 @@ Platforms::Platforms()
     topSide = platform1.getPosition().y;
 
     platforms.push_back(platform1);
-
     SetBoundingBox(platform_position, size);
 }
 

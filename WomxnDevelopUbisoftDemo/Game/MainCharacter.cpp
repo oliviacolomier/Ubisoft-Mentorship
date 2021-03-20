@@ -41,7 +41,6 @@ MainCharacter::MainCharacter()
     m_Texture.loadFromFile(".\\Assets\\red_ball.bmp"); //sprite image
 
     const sf::Vector2f size(static_cast<float>(m_Texture.getSize().x), static_cast<float>(m_Texture.getSize().y));
-    //Sprite m_Sprite = Sprite(AssetManager::GetTexture(".\\Assets\\red_ball.bmp"));
     m_Sprite.setTexture(m_Texture); //set sprite texture
     m_Sprite.setOrigin(size * 0.5f); //set origin for sprite
     m_Sprite.setPosition(m_Position); //set position for sprite
@@ -49,7 +48,9 @@ MainCharacter::MainCharacter()
     SetBoundingBox(m_Position, size);
     
 
-    //m_BoundingBox.left;
+    //world->setGroundHeight(500.0f);
+    //groundHeight = world->getGroundHeight();
+
     
     m_IsUsingJoystick = GetFirstJoystickIndex(m_JoystickIndex);
 }
@@ -160,6 +161,16 @@ void MainCharacter::jump()
 void MainCharacter::StartEndGame()
 {
     m_IsPlayingEndGame = true;
+}
+
+void MainCharacter::setVelocity(sf::Vector2f main_velocity)
+{
+    main_velocity = m_Velocity;
+}
+
+sf::Vector2f MainCharacter::getVelocity()
+{
+    return m_Velocity;
 }
 
 

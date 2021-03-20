@@ -11,7 +11,9 @@ World::World(MainCharacter* character):m_mainCharacter(*character)
 	background.setPosition(sf::Vector2f(500.0f, 400.0f));
 	background.setScale(sf::Vector2f(1.4f, 1.4f));
 
-	groundHeight = 500.0f;
+	onPlatform = sf::Vector2f(0.0f, 0.0f);
+
+
 }
 
 void World::CreatePlatform() // sf::Vector2f position, sf::Vector2f size)
@@ -46,6 +48,27 @@ void World::CreatePlatform() // sf::Vector2f position, sf::Vector2f size)
 
 }
 
+void World::collide(MainCharacter* character, Platforms platform)
+{
+
+	if (character->IsColliding(platform))
+	{
+		printf("Yes");
+		player_box = character->GetBoundingBox();
+		platform_box = platform.GetBoundingBox();
+
+		player_position = character->GetPosition();
+		platform_position = platform.GetPosition();
+
+		
+
+
+	}
+	
+
+
+}
+
 void World::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
 
@@ -61,4 +84,12 @@ void World::draw(sf::RenderTarget& target, sf::RenderStates states) const
 	
 }
 
+void World::setGroundHeight(float groundHeight)
+{
+	groundHeight = groundHeight;
+}
 
+float World::getGroundHeight()
+{
+	return groundHeight;
+}
