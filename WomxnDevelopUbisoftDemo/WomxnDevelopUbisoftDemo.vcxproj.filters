@@ -41,6 +41,9 @@
     <ClCompile Include="World.cpp">
       <Filter>Game</Filter>
     </ClCompile>
+    <ClCompile Include="AssetManager.cpp">
+      <Filter>Game\Engine</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h" />
@@ -76,6 +79,9 @@
     </ClInclude>
     <ClInclude Include="World.h">
       <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="AssetManager.h">
+      <Filter>Game\Engine</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
