@@ -14,10 +14,10 @@ GameDemo::GameDemo()
     m_EndgameText.setString("!!! WIN !!!");
     m_EndgameText.setCharacterSize(24);
     m_EndgameText.setFillColor(sf::Color::Red);
-
     m_EndgameSoundBuffer.loadFromFile("Assets\\Test.wav");
-
     m_EndgameSound.setBuffer(m_EndgameSoundBuffer);
+
+    
 }
 
 void GameDemo::Update(float deltaTime)

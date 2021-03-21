@@ -9,6 +9,7 @@ public:
 private:
 	sf::Sprite world_sprite;
 	sf::Texture world_texture;
+	
 
 };
 

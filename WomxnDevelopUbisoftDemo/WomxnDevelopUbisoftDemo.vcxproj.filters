@@ -36,6 +36,9 @@
       <Filter>Game\Engine</Filter>
     </ClCompile>
     <ClCompile Include="World.cpp" />
+    <ClCompile Include="StateMachine.cpp">
+      <Filter>Game\Engine</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h" />
@@ -64,6 +67,10 @@
       <Filter>Game\Engine</Filter>
     </ClInclude>
     <ClInclude Include="World.h" />
+    <ClInclude Include="State.h" />
+    <ClInclude Include="StateMachine.h">
+      <Filter>Game\Engine</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Game">

@@ -12,6 +12,7 @@ Game::Game(const char* windowTitle)
     m_Window.setFramerateLimit(static_cast<uint32_t>(APP_MAX_FRAMERATE));
     m_Window.setActive();
     ImGui::SFML::Init(m_Window);
+    
 }
 
 Game::~Game()
@@ -21,6 +22,7 @@ Game::~Game()
 
 void Game::RunGameLoop()
 {
+    
     float deltaTime{ 1.0f / APP_MAX_FRAMERATE };
     sf::Clock clock;
 
@@ -62,7 +64,6 @@ void Game::RunGameLoop()
         }
 
         ImGui::SFML::Update(m_Window, clock.restart());
-
         Update(deltaTime);
         Render(m_Window);
         RenderDebugMenu(m_Window);
