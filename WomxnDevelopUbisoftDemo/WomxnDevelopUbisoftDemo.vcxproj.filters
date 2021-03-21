@@ -35,9 +35,11 @@
     <ClCompile Include="Engine\Collision.cpp">
       <Filter>Game\Engine</Filter>
     </ClCompile>
-    <ClCompile Include="World.cpp" />
     <ClCompile Include="StateMachine.cpp">
       <Filter>Game\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="World.cpp">
+      <Filter>Game</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -66,10 +68,14 @@
     <ClInclude Include="Engine\Collision.h">
       <Filter>Game\Engine</Filter>
     </ClInclude>
-    <ClInclude Include="World.h" />
-    <ClInclude Include="State.h" />
     <ClInclude Include="StateMachine.h">
       <Filter>Game\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="State.h">
+      <Filter>Game\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="World.h">
+      <Filter>Game</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

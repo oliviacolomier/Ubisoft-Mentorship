@@ -1,5 +1,5 @@
 #include "stdafx.h"
-#include "Game/World.h"
+#include "World.h"
 
 World::World()
 {

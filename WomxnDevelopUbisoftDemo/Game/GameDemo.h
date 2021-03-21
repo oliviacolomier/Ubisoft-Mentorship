@@ -3,7 +3,7 @@
 #include <Engine/Game.h>
 #include <Game/Door.h>
 #include <Game/MainCharacter.h>
-#include <World.h>
+#include <Game/World.h>
 
 class GameDemo : public Game
 {
