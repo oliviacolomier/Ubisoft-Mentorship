@@ -4,6 +4,7 @@
 
 int main()
 {
+
     GameDemo game{};
     game.RunGameLoop();
 

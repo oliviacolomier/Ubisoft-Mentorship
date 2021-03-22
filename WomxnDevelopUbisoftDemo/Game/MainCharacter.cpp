@@ -85,9 +85,10 @@ void MainCharacter::Update(float deltaTime)
     {
         if (Keyboard::isKeyPressed(Keyboard::D))
         {
+            FrameCounter();
             sourceY = Right;
             m_Velocity.x = fmin(m_Velocity.x + SPEED_INC, SPEED_MAX);
-            FrameCounter();
+            
             
         }
         else if (Keyboard::isKeyPressed(Keyboard::A))

@@ -16,20 +16,35 @@ GameDemo::GameDemo()
     m_EndgameSoundBuffer.loadFromFile("Assets\\Test.wav");
     m_EndgameSound.setBuffer(m_EndgameSoundBuffer);
 
-   
+    const int level[] =
+    {
+        0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+        0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 2, 0, 0, 0, 0,
+        1, 1, 0, 0, 0, 0, 0, 0, 3, 3, 3, 3, 3, 3, 3, 3,
+        0, 1, 0, 0, 2, 0, 3, 3, 3, 0, 1, 1, 1, 0, 0, 0,
+        0, 1, 1, 0, 3, 3, 3, 0, 0, 0, 1, 1, 1, 2, 0, 0,
+        0, 0, 1, 0, 3, 0, 2, 2, 0, 0, 1, 1, 1, 1, 2, 0,
+        2, 0, 1, 0, 3, 0, 2, 2, 2, 0, 1, 1, 1, 1, 1, 1,
+        0, 0, 1, 0, 3, 2, 2, 2, 0, 0, 0, 0, 1, 1, 1, 1,
+    };
 
+    // create the tilemap from the level definition
+    m_World.load("tileset.png", sf::Vector2u(32, 32), level, 16, 8);
 
     
 }
 
 void GameDemo::Update(float deltaTime)
 {
+   
     m_MainCharacter.Update(deltaTime);
     
 }
 
 void GameDemo::Render(sf::RenderTarget& target)
 {
+
+
     target.clear(sf::Color(0, 0, 0));
     target.draw(m_World);
     target.draw(m_MainCharacter);
