@@ -9,6 +9,7 @@ public:
 	void Update(float deltaTime);
 	void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
 	void StartEndGame();
+	void FrameCounter();
 
 
 private:
@@ -22,7 +23,7 @@ private:
 	sf::Clock clock;
 
 
-	int sourceX = 48; //where we start drawing from
+	int sourceX = 48; //where we start drawing from (sprites are 48 x 48)
 	int sourceY = Down; //start drawing for Y coordinate
 
 

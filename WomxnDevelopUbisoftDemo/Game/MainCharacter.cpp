@@ -34,9 +34,7 @@ namespace
 MainCharacter::MainCharacter()
     : m_IsPlayingEndGame(false), m_Position(718.0f, 682.0f), m_IsUsingJoystick(false), m_JoystickIndex(0), m_WasButtonPressed(false)
 {
-   
     m_Texture.loadFromFile(".\\Assets\\tiger.gif");
-  
     const sf::Vector2f size(static_cast<float>(m_Texture.getSize().x), static_cast<float>(m_Texture.getSize().y));
     m_Sprite.setTexture(m_Texture);
     m_Sprite.setOrigin(size * 0.5f);
@@ -44,14 +42,13 @@ MainCharacter::MainCharacter()
     m_Sprite.setScale(0.9f, 0.9f);
 
     SetBoundingBox(m_Position, size);
-
     m_IsUsingJoystick = GetFirstJoystickIndex(m_JoystickIndex);
 }
 
 
 void MainCharacter::Update(float deltaTime)
 {
- 
+
     if (m_IsPlayingEndGame)
     {
         return;
@@ -60,7 +57,7 @@ void MainCharacter::Update(float deltaTime)
     const float SPEED_MAX = 150.0f;
     const float SPEED_INC = 10.0f;
     const float DEAD_ZONE = 5.0f;
-    const float SLOWDOWN_RATE = 0.9f;
+    const float SLOWDOWN_RATE = 0.5f;
 
     if (m_IsUsingJoystick)
     {
@@ -90,12 +87,14 @@ void MainCharacter::Update(float deltaTime)
         {
             sourceY = Right;
             m_Velocity.x = fmin(m_Velocity.x + SPEED_INC, SPEED_MAX);
+            FrameCounter();
             
         }
         else if (Keyboard::isKeyPressed(Keyboard::A))
         {
             sourceY = Left;
             m_Velocity.x = fmax(m_Velocity.x - SPEED_INC, -SPEED_MAX);
+            FrameCounter();
         }
         else
         {
@@ -106,11 +105,13 @@ void MainCharacter::Update(float deltaTime)
         {
             sourceY = Down;
             m_Velocity.y = fmin(m_Velocity.y + SPEED_INC, SPEED_MAX);
+            FrameCounter();
         }
         else if (Keyboard::isKeyPressed(Keyboard::W))
         {
             sourceY = Up;
             m_Velocity.y = fmax(m_Velocity.y - SPEED_INC, -SPEED_MAX);
+            FrameCounter();
         }
         else
         {
@@ -120,14 +121,6 @@ void MainCharacter::Update(float deltaTime)
 
     }
 
-    frameCounter += frameSpeed * clock.restart().asSeconds();
-    if (frameCounter >= switchFrame)
-    {
-        frameCounter = 0;
-        sourceX++;
-        if (sourceX * 48 >= m_Texture.getSize().x)
-            sourceX = 0;
-    }
     m_Sprite.setTextureRect(sf::IntRect(sourceX * 48, sourceY * 50, 48, 48));
     m_Position += m_Velocity * deltaTime;
     m_Sprite.setPosition(m_Position);
@@ -143,5 +136,18 @@ void MainCharacter::draw(sf::RenderTarget& target, sf::RenderStates states) cons
 void MainCharacter::StartEndGame()
 {
     m_IsPlayingEndGame = true;
+}
+
+void MainCharacter::FrameCounter()
+{
+
+    frameCounter += frameSpeed * clock.restart().asSeconds();
+    if (frameCounter >= switchFrame)
+    {
+        frameCounter = 0;
+        sourceX++;
+        if (sourceX * 48 >= m_Texture.getSize().x)
+            sourceX = 0;
+    }
 }
 

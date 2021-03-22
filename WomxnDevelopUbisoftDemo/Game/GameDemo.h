@@ -1,7 +1,6 @@
 #pragma once
 
 #include <Engine/Game.h>
-#include <Game/Door.h>
 #include <Game/MainCharacter.h>
 #include <Game/World.h>
 
@@ -19,7 +18,6 @@ private:
     sf::Text m_EndgameText;
     sf::SoundBuffer m_EndgameSoundBuffer;
     sf::Sound m_EndgameSound;
-    Door m_Door;
     MainCharacter m_MainCharacter;
     World m_World;
     bool m_IsFinished;

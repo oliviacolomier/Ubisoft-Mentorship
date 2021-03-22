@@ -3,7 +3,6 @@
 
 GameDemo::GameDemo()
     : Game{ "Game Demo" }
-    , m_Door{ 900, 600, 100, 200 }
     , m_MainCharacter{}
     , m_IsFinished{ false }
 {
@@ -17,34 +16,22 @@ GameDemo::GameDemo()
     m_EndgameSoundBuffer.loadFromFile("Assets\\Test.wav");
     m_EndgameSound.setBuffer(m_EndgameSoundBuffer);
 
+   
+
+
     
 }
 
 void GameDemo::Update(float deltaTime)
 {
     m_MainCharacter.Update(deltaTime);
-    m_Door.Update(deltaTime);
-
-    if (!m_IsFinished)
-    {
-        //if (m_Door.IsColliding(m_MainCharacter))
-        //if (m_Door.Contains(m_MainCharacter.GetCenter()))
-        if (m_Door.Contains(m_MainCharacter))
-        {
-            m_EndgameSound.play();
-
-            m_MainCharacter.StartEndGame();
-            m_Door.StartEndGame();
-            m_IsFinished = true;
-        }
-    }
+    
 }
 
 void GameDemo::Render(sf::RenderTarget& target)
 {
     target.clear(sf::Color(0, 0, 0));
     target.draw(m_World);
-    target.draw(m_Door);
     target.draw(m_MainCharacter);
 
     if (m_IsFinished)
