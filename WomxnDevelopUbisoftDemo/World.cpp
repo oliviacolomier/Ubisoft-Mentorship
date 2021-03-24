@@ -20,6 +20,27 @@ World::World()
 	rect.setOrigin(700.0f, 800.0f);
 	rect.setPosition(500.0f, 800.0f);
 	rect.setScale(sf::Vector2f(0.4f, 0.4f));
+
+
+	const int level[] =
+	{
+		0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+		0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 2, 0, 0, 0, 0,
+		1, 1, 0, 0, 0, 0, 0, 0, 3, 3, 3, 3, 3, 3, 3, 3,
+		0, 1, 0, 0, 2, 0, 3, 3, 3, 0, 1, 1, 1, 0, 0, 0,
+		0, 1, 1, 0, 3, 3, 3, 0, 0, 0, 1, 1, 1, 2, 0, 0,
+		0, 0, 1, 0, 3, 0, 2, 2, 0, 0, 1, 1, 1, 1, 2, 0,
+		2, 0, 1, 0, 3, 0, 2, 2, 2, 0, 1, 1, 1, 1, 1, 1,
+		0, 0, 1, 0, 3, 2, 2, 2, 0, 0, 0, 0, 1, 1, 1, 1,
+		1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+
+
+
+	};
+
+
+	// create the tilemap from the level definition
+	load(("Assets\\tileset.bmp"), sf::Vector2u(32, 32), level, 16, 9);
 }
 
 //void World::draw(sf::RenderTarget& target, sf::RenderStates states) const
@@ -89,10 +110,6 @@ void World::draw(sf::RenderTarget& target, sf::RenderStates states) const
 
 	//draw the vertex array
 	target.draw(m_vertices, states);
-
-
-
-
 
 }
 
