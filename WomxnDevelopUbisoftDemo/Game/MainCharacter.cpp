@@ -85,6 +85,7 @@ void MainCharacter::Update(float deltaTime)
     {
         if (Keyboard::isKeyPressed(Keyboard::D))
         {
+           // m_Sprite.setRotation(0);
             FrameCounter();
             sourceY = Right;
             m_Velocity.x = fmin(m_Velocity.x + SPEED_INC, SPEED_MAX);
@@ -94,6 +95,7 @@ void MainCharacter::Update(float deltaTime)
         else if (Keyboard::isKeyPressed(Keyboard::A))
         {
             sourceY = Left;
+            //m_Sprite.setRotation(180);
             m_Velocity.x = fmax(m_Velocity.x - SPEED_INC, -SPEED_MAX);
             FrameCounter();
         }
@@ -105,12 +107,14 @@ void MainCharacter::Update(float deltaTime)
         if (Keyboard::isKeyPressed(Keyboard::S))
         {
             sourceY = Down;
+            //m_Sprite.setRotation(270);
             m_Velocity.y = fmin(m_Velocity.y + SPEED_INC, SPEED_MAX);
             FrameCounter();
         }
         else if (Keyboard::isKeyPressed(Keyboard::W))
         {
             sourceY = Up;
+            //m_Sprite.setRotation(90);
             m_Velocity.y = fmax(m_Velocity.y - SPEED_INC, -SPEED_MAX);
             FrameCounter();
         }
@@ -119,7 +123,11 @@ void MainCharacter::Update(float deltaTime)
             m_Velocity.y *= SLOWDOWN_RATE;
             
         }
-
+        if (Keyboard::isKeyPressed(Keyboard::S) && Keyboard::isKeyPressed(Keyboard::D))
+        {
+            //m_Sprite.setRotation(315);
+        }
+        
     }
 
     m_Sprite.setTextureRect(sf::IntRect(sourceX * 48, sourceY * 50, 48, 48));
