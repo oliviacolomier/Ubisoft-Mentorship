@@ -16,11 +16,7 @@ GameDemo::GameDemo()
     m_EndgameSoundBuffer.loadFromFile("Assets\\Test.wav");
     m_EndgameSound.setBuffer(m_EndgameSoundBuffer);
 
-   
-
-
-
-
+ 
     
 }
 

@@ -85,19 +85,18 @@ void MainCharacter::Update(float deltaTime)
     {
         if (Keyboard::isKeyPressed(Keyboard::D))
         {
-           // m_Sprite.setRotation(0);
-            FrameCounter();
-            sourceY = Right;
+
+            updateFrameCounter();
+            source.y = Right;
             m_Velocity.x = fmin(m_Velocity.x + SPEED_INC, SPEED_MAX);
             
             
         }
         else if (Keyboard::isKeyPressed(Keyboard::A))
         {
-            sourceY = Left;
-            //m_Sprite.setRotation(180);
+            source.y = Left;
             m_Velocity.x = fmax(m_Velocity.x - SPEED_INC, -SPEED_MAX);
-            FrameCounter();
+            updateFrameCounter();
         }
         else
         {
@@ -106,31 +105,25 @@ void MainCharacter::Update(float deltaTime)
 
         if (Keyboard::isKeyPressed(Keyboard::S))
         {
-            sourceY = Down;
-            //m_Sprite.setRotation(270);
+            source.y = Down;
             m_Velocity.y = fmin(m_Velocity.y + SPEED_INC, SPEED_MAX);
-            FrameCounter();
+            updateFrameCounter();
         }
         else if (Keyboard::isKeyPressed(Keyboard::W))
         {
-            sourceY = Up;
-            //m_Sprite.setRotation(90);
+            source.y = Up;
             m_Velocity.y = fmax(m_Velocity.y - SPEED_INC, -SPEED_MAX);
-            FrameCounter();
+            updateFrameCounter();
         }
         else
         {
             m_Velocity.y *= SLOWDOWN_RATE;
             
         }
-        if (Keyboard::isKeyPressed(Keyboard::S) && Keyboard::isKeyPressed(Keyboard::D))
-        {
-            //m_Sprite.setRotation(315);
-        }
-        
+     
     }
 
-    m_Sprite.setTextureRect(sf::IntRect(sourceX * 48, sourceY * 50, 48, 48));
+    m_Sprite.setTextureRect(sf::IntRect(source.x * 48, source.y * 50, 48, 48));
     m_Position += m_Velocity * deltaTime;
     m_Sprite.setPosition(m_Position);
     SetCenter(m_Position);
@@ -147,16 +140,16 @@ void MainCharacter::StartEndGame()
     m_IsPlayingEndGame = true;
 }
 
-void MainCharacter::FrameCounter()
+void MainCharacter::updateFrameCounter()
 {
 
     frameCounter += frameSpeed * clock.restart().asSeconds();
     if (frameCounter >= switchFrame)
     {
         frameCounter = 0;
-        sourceX++;
-        if (sourceX * 48 >= m_Texture.getSize().x)
-            sourceX = 0;
+        source.x++;
+        if (source.x * 48 >= m_Texture.getSize().x)
+            source.x = 0;
     }
 }
 

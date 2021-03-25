@@ -32,14 +32,8 @@
     <ClCompile Include="Engine\Collision.cpp">
       <Filter>Game\Engine</Filter>
     </ClCompile>
-    <ClCompile Include="StateMachine.cpp">
-      <Filter>Game\Engine</Filter>
-    </ClCompile>
     <ClCompile Include="World.cpp">
       <Filter>Game</Filter>
-    </ClCompile>
-    <ClCompile Include="AssetManager.cpp">
-      <Filter>Game\Engine</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -63,15 +57,6 @@
       <Filter>Game</Filter>
     </ClInclude>
     <ClInclude Include="Engine\Collision.h">
-      <Filter>Game\Engine</Filter>
-    </ClInclude>
-    <ClInclude Include="StateMachine.h">
-      <Filter>Game\Engine</Filter>
-    </ClInclude>
-    <ClInclude Include="State.h">
-      <Filter>Game\Engine</Filter>
-    </ClInclude>
-    <ClInclude Include="AssetManager.h">
       <Filter>Game\Engine</Filter>
     </ClInclude>
     <ClInclude Include="Game\World.h">

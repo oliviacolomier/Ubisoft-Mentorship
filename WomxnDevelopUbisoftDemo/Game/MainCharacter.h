@@ -9,7 +9,7 @@ public:
 	void Update(float deltaTime);
 	void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
 	void StartEndGame();
-	void FrameCounter();
+	void updateFrameCounter();
 
 
 private:
@@ -22,9 +22,10 @@ private:
 	sf::Sprite m_Sprite;
 	sf::Clock clock;
 
-
-	int sourceX = 48; //where we start drawing from (sprites are 48 x 48)
-	int sourceY = Down; //start drawing for Y coordinate
+	//Vector2i
+	sf::Vector2u source = sf::Vector2u(48, Down);
+	//int sourceX = 48; //where we start drawing from (sprites are 48 x 48)
+	//int sourceY = Down; //start drawing for Y coordinate
 
 
 	bool m_IsUsingJoystick;
