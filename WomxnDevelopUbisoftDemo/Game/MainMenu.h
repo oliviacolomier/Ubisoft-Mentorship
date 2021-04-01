@@ -7,8 +7,10 @@ public:
 	void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 
 private:
-	sf::RectangleShape rect;
-	sf::Text text;
-	sf::Font font;
+
+	sf::Sprite menuBackground;
+	sf::Texture m_Texture;
+	sf::Text m_text;
+	sf::Font m_font;
 };
 

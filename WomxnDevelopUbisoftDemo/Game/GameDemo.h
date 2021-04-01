@@ -3,7 +3,7 @@
 #include <Engine/Game.h>
 #include <Game/MainCharacter.h>
 #include <Game/World.h>
-#include <MainMenu.h>
+#include <Game/MainMenu.h>
 
 class GameDemo : public Game
 {
@@ -27,7 +27,7 @@ private:
     sf::Sound m_EndgameSound;
    
     MainMenu m_Menu;
-    Gamestate m_CurrentState = Gamestate::Gameplay;
+    Gamestate m_CurrentState = Gamestate::Menu;
     MainCharacter m_MainCharacter;
     World m_World;
     bool m_IsFinished;
