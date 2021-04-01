@@ -26,27 +26,46 @@ void GameDemo::update(float deltaTime)
     switch (m_CurrentState)
     {
     case Gamestate::Gameplay:
-        //update chracter
+       
+
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::M))
+        {
+            m_CurrentState = Gamestate::Menu;
+        }
+
         m_MainCharacter.update(deltaTime);
+
         break;
+
     case Gamestate::Dialogue:
         //update dialogue
         break;
+
     case Gamestate::Menu:
-        //update Menu
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::P))
+        {
+            m_CurrentState = Gamestate::Gameplay;
+        }
+        
         break;
 
     }
-
-    
-    
 }
 
 void GameDemo::render(sf::RenderTarget& target)
 {
     target.clear(sf::Color(0, 0, 0));
-    target.draw(m_World);
-    target.draw(m_MainCharacter);
+
+    if (m_CurrentState == Gamestate::Menu)
+    {
+        target.draw(m_Menu);
+    }
+    if(m_CurrentState == Gamestate::Gameplay)
+    {
+       
+        target.draw(m_World);
+        target.draw(m_MainCharacter);
+    }
 
     if (m_IsFinished)
     {

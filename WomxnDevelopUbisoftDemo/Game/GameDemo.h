@@ -3,6 +3,7 @@
 #include <Engine/Game.h>
 #include <Game/MainCharacter.h>
 #include <Game/World.h>
+#include <MainMenu.h>
 
 class GameDemo : public Game
 {
@@ -24,8 +25,11 @@ private:
     sf::Text m_EndgameText;
     sf::SoundBuffer m_EndgameSoundBuffer;
     sf::Sound m_EndgameSound;
+   
+    MainMenu m_Menu;
     Gamestate m_CurrentState = Gamestate::Gameplay;
     MainCharacter m_MainCharacter;
     World m_World;
     bool m_IsFinished;
+    
 };

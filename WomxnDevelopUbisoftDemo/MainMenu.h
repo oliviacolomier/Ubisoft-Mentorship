@@ -1,11 +1,14 @@
 #pragma once
-class MainMenu
+class MainMenu: public sf::Drawable
 {
 public:
 	MainMenu();
 
-	void draw();
+	void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 
-
+private:
+	sf::RectangleShape rect;
+	sf::Text text;
+	sf::Font font;
 };
 
