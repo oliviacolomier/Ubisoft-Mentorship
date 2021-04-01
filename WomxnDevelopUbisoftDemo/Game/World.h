@@ -10,8 +10,8 @@ private:
 
 	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 	
-	sf::VertexArray m_vertices;
-	sf::Texture m_tileset;
+	sf::VertexArray m_Vertices;
+	sf::Texture m_Tileset;
 
 	
 

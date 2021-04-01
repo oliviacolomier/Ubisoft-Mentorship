@@ -20,7 +20,7 @@ Game::~Game()
     ImGui::SFML::Shutdown();
 }
 
-void Game::RunGameLoop()
+void Game::runGameLoop()
 {
     
     float deltaTime{ 1.0f / APP_MAX_FRAMERATE };
@@ -64,9 +64,9 @@ void Game::RunGameLoop()
         }
 
         ImGui::SFML::Update(m_Window, clock.restart());
-        Update(deltaTime);
-        Render(m_Window);
-        RenderDebugMenu(m_Window);
+        update(deltaTime);
+        render(m_Window);
+        renderDebugMenu(m_Window);
 
         ImGui::EndFrame();
         if (toggleImGui)

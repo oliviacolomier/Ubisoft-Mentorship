@@ -46,8 +46,9 @@ MainCharacter::MainCharacter()
 }
 
 
-void MainCharacter::Update(float deltaTime)
+void MainCharacter::update(float deltaTime)
 {
+
 
     if (m_IsPlayingEndGame)
     {
@@ -135,7 +136,7 @@ void MainCharacter::draw(sf::RenderTarget& target, sf::RenderStates states) cons
     target.draw(m_Sprite);
 }
 
-void MainCharacter::StartEndGame()
+void MainCharacter::startEndGame()
 {
     m_IsPlayingEndGame = true;
 }
@@ -143,10 +144,10 @@ void MainCharacter::StartEndGame()
 void MainCharacter::updateFrameCounter()
 {
 
-    frameCounter += frameSpeed * clock.restart().asSeconds();
-    if (frameCounter >= switchFrame)
+    m_frameCounter += m_frameSpeed * m_Clock.restart().asSeconds();
+    if (m_frameCounter >= m_switchFrame)
     {
-        frameCounter = 0;
+        m_frameCounter = 0;
         source.x++;
         if (source.x * 48 >= m_Texture.getSize().x)
             source.x = 0;

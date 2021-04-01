@@ -20,17 +20,30 @@ GameDemo::GameDemo()
     
 }
 
-void GameDemo::Update(float deltaTime)
+void GameDemo::update(float deltaTime)
 {
-   
-    m_MainCharacter.Update(deltaTime);
+
+    switch (m_CurrentState)
+    {
+    case Gamestate::Gameplay:
+        //update chracter
+        m_MainCharacter.update(deltaTime);
+        break;
+    case Gamestate::Dialogue:
+        //update dialogue
+        break;
+    case Gamestate::Menu:
+        //update Menu
+        break;
+
+    }
+
+    
     
 }
 
-void GameDemo::Render(sf::RenderTarget& target)
+void GameDemo::render(sf::RenderTarget& target)
 {
-
-
     target.clear(sf::Color(0, 0, 0));
     target.draw(m_World);
     target.draw(m_MainCharacter);
@@ -41,7 +54,7 @@ void GameDemo::Render(sf::RenderTarget& target)
     }
 }
 
-void GameDemo::RenderDebugMenu(sf::RenderTarget& target)
+void GameDemo::renderDebugMenu(sf::RenderTarget& target)
 {
     ImGui::Begin("Debug Menu");
     ImGui::Text("Press F1 to close this debug menu");

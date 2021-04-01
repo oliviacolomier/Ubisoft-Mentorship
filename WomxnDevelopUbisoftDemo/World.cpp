@@ -38,13 +38,13 @@ World::World()
 
 bool World::load(const std::string& tileset, sf::Vector2u tileSize, const int* tiles, unsigned int width, unsigned int height)
 {
-	if (!m_tileset.loadFromFile(tileset))
+	if (!m_Tileset.loadFromFile(tileset))
 	{
 		return false;
 	}
 
-	m_vertices.setPrimitiveType(sf::Quads);
-	m_vertices.resize(static_cast<size_t>(width) * height * 4);
+	m_Vertices.setPrimitiveType(sf::Quads);
+	m_Vertices.resize(static_cast<size_t>(width) * height * 4);
 
 
 			//populate vertex array, with one quad per tile
@@ -62,11 +62,11 @@ bool World::load(const std::string& tileset, sf::Vector2u tileSize, const int* t
 					int tileNumber = tiles[i + j * width];
 
 					//find its position in the tileset texture
-					int tu = tileNumber % (m_tileset.getSize().x / tileSize.x);
-					int tv = tileNumber / (m_tileset.getSize().x / tileSizeX);
+					int tu = tileNumber % (m_Tileset.getSize().x / tileSize.x);
+					int tv = tileNumber / (m_Tileset.getSize().x / tileSizeX);
 					
 					//get a pointer to the current tile's quad
-					sf::Vertex* quad = &m_vertices[(i + static_cast<size_t>(j) * width) * 4];
+					sf::Vertex* quad = &m_Vertices[(i + static_cast<size_t>(j) * width) * 4];
 
 					//define its 4 corners
 					//add static_cast
@@ -92,10 +92,10 @@ void World::draw(sf::RenderTarget& target, sf::RenderStates states) const
 	states.transform *= getTransform();
 
 	//apply the tileset Texture
-	states.texture = &m_tileset;
+	states.texture = &m_Tileset;
 
 	//draw the vertex array
-	target.draw(m_vertices, states);
+	target.draw(m_Vertices, states);
 
 }
 
