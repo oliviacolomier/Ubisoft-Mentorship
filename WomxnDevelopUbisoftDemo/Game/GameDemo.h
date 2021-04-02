@@ -22,10 +22,7 @@ public:
 
 private:
 
-    sf::Font m_EndgameTextFont;
-    sf::Text m_EndgameText;
-    sf::SoundBuffer m_EndgameSoundBuffer;
-    sf::Sound m_EndgameSound;
+
    
     MainMenu m_Menu;
     Gamestate m_CurrentState;
@@ -33,6 +30,5 @@ private:
     World m_World;
     EndGame m_Endgame;
 
-    bool m_IsFinished;
     
 };
