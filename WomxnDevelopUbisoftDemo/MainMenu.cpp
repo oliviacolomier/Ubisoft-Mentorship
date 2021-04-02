@@ -16,6 +16,13 @@ MainMenu::MainMenu()
 	m_Text.setFillColor(sf::Color::Black);
 	m_Text.setStyle(sf::Text::Bold);
 
+	if (!m_Music.openFromFile(".\\Assets\\ForestHaven.ogg"))
+	{
+		printf("Error, music doesn't load");
+	}
+	
+	
+
 }
 
 void MainMenu::draw(sf::RenderTarget& target, sf::RenderStates states) const
@@ -23,4 +30,9 @@ void MainMenu::draw(sf::RenderTarget& target, sf::RenderStates states) const
 	target.draw(menuBackground);
 	target.draw(m_Text);
 	
+}
+
+void MainMenu::playMusic()
+{
+	m_Music.play();
 }

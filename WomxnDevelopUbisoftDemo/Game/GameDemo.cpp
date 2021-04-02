@@ -7,6 +7,7 @@ GameDemo::GameDemo()
 
 {
     m_CurrentState = Gamestate::Menu;
+    
 
 }
 
@@ -17,12 +18,13 @@ void GameDemo::update(float deltaTime)
     switch (m_CurrentState)
     {
     case Gamestate::Gameplay:
-       
+    {
+
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::M))
         {
             m_CurrentState = Gamestate::Menu;
         }
-        
+
         m_MainCharacter.update(deltaTime);
 
         if (m_MainCharacter.GetBoundingBox().intersects(m_World.rect1.getGlobalBounds()))
@@ -34,33 +36,38 @@ void GameDemo::update(float deltaTime)
         {
             m_CurrentState = Gamestate::Endgame;
         }
-        
+
 
         break;
+    }
 
     case Gamestate::Dialogue:
-        //update dialogue
+    { //update dialogue
         break;
+    }
 
     case Gamestate::Menu:
+    {
+        m_Menu.playMusic();
+
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::P))
         {
             m_CurrentState = Gamestate::Gameplay;
         }
-        
-        break;
 
+        break;
+    }
     case Gamestate::Endgame:
     {
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
         {
             m_MainCharacter.resetPosition();
             m_CurrentState = Gamestate::Menu;
-            
+
         }
     }
-
     }
+    
 }
 
 void GameDemo::render(sf::RenderTarget& target)
