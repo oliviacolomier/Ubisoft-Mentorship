@@ -4,6 +4,15 @@
 World::World()
 {
 
+	rect1.setSize(sf::Vector2f(50.0f, 50.0f));
+	rect1.setFillColor(sf::Color::Red);
+	rect1.setPosition(sf::Vector2f(290.0f, 350.0f));
+
+	rect2.setSize(sf::Vector2f(50.0f, 50.0f));
+	rect2.setFillColor(sf::Color::Red);
+	rect2.setPosition(sf::Vector2f(70.0f, 30.0f));
+
+
 	const int level[] =
 	{
 		72, 27, 72, 72, 27, 72, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24,24,24,24,24, 24,
@@ -96,6 +105,9 @@ void World::draw(sf::RenderTarget& target, sf::RenderStates states) const
 
 	//draw the vertex array
 	target.draw(m_Vertices, states);
+
+	target.draw(rect1);
+	target.draw(rect2);
 
 }
 

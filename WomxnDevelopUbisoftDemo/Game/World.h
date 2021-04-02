@@ -1,10 +1,13 @@
 #pragma once
-class World: public sf::Drawable, public sf::Transformable
+class World : public sf::Drawable, public sf::Transformable, public BoxCollideable
 {
 public:
 	World();
 	
 	bool load(const std::string& tileset, sf::Vector2u tilesize, const int* tiles, unsigned int width, unsigned int height);
+	
+	sf::RectangleShape rect1;
+	sf::RectangleShape rect2;
 
 private:
 

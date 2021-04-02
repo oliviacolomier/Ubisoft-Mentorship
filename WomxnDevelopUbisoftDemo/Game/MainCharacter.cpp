@@ -37,11 +37,12 @@ MainCharacter::MainCharacter()
     m_Texture.loadFromFile(".\\Assets\\tiger.gif");
     const sf::Vector2f size(static_cast<float>(m_Texture.getSize().x), static_cast<float>(m_Texture.getSize().y));
     m_Sprite.setTexture(m_Texture);
-    m_Sprite.setOrigin(size * 0.5f);
+    //m_Sprite.setOrigin(size * 0.5f);
     m_Sprite.setPosition(m_Position);
     m_Sprite.setScale(0.9f, 0.9f);
+   
 
-    SetBoundingBox(m_Position, size);
+    SetBoundingBox(50.0f,50.0f,50.0f,50.0f);
     m_IsUsingJoystick = GetFirstJoystickIndex(m_JoystickIndex);
 }
 
@@ -84,6 +85,7 @@ void MainCharacter::update(float deltaTime)
     }
     else
     {
+
         if (Keyboard::isKeyPressed(Keyboard::D))
         {
 

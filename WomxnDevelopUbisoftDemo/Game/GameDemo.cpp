@@ -6,6 +6,7 @@ GameDemo::GameDemo()
     , m_MainCharacter{}
     , m_IsFinished{ false }
 {
+
     m_EndgameTextFont.loadFromFile("Assets\\arial.ttf");
 
     m_EndgameText.setFont(m_EndgameTextFont);
@@ -16,24 +17,34 @@ GameDemo::GameDemo()
     m_EndgameSoundBuffer.loadFromFile("Assets\\Test.wav");
     m_EndgameSound.setBuffer(m_EndgameSoundBuffer);
 
- 
+    //m_World.rect1.getLocalBounds();
+    //m_World.rect2.getGlobalBounds();
+    //m_MainCharacter.GetBoundingBox();
+    
+    
     
 }
 
 void GameDemo::update(float deltaTime)
 {
 
+
     switch (m_CurrentState)
     {
     case Gamestate::Gameplay:
        
-
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::M))
         {
             m_CurrentState = Gamestate::Menu;
         }
-
+        
         m_MainCharacter.update(deltaTime);
+
+        if (m_MainCharacter.GetBoundingBox().intersects(m_World.rect1.getGlobalBounds()))
+            printf("yes");
+
+        if (m_MainCharacter.GetBoundingBox().intersects(m_World.rect2.getGlobalBounds()))
+            printf("yes");
 
         break;
 
