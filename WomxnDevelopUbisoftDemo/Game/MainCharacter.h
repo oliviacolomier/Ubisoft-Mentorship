@@ -11,13 +11,14 @@ public:
 	void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
 	void startEndGame();
 	void updateFrameCounter();
+	void resetPosition();
 
 
 private:
 
 	enum Direction{Down, Left, Right, Up};
 
-	float m_frameCounter = 0, m_switchFrame = 100, m_frameSpeed = 500;
+	float m_FrameCounter = 0, m_SwitchFrame = 100, m_FrameSpeed = 500;
 
 	sf::Texture m_Texture;
 	sf::Sprite m_Sprite;

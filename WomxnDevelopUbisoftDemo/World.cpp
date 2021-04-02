@@ -97,6 +97,9 @@ bool World::load(const std::string& tileset, sf::Vector2u tileSize, const int* t
 
 void World::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
+	target.draw(rect1);
+	target.draw(rect2);
+
 	//apply the transform
 	states.transform *= getTransform();
 
@@ -106,8 +109,7 @@ void World::draw(sf::RenderTarget& target, sf::RenderStates states) const
 	//draw the vertex array
 	target.draw(m_Vertices, states);
 
-	target.draw(rect1);
-	target.draw(rect2);
+	
 
 }
 

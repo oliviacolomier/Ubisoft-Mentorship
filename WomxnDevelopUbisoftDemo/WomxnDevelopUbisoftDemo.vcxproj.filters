@@ -41,6 +41,9 @@
     <ClCompile Include="Dialogue.cpp">
       <Filter>Game</Filter>
     </ClCompile>
+    <ClCompile Include="EndGame.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h" />
@@ -68,10 +71,13 @@
     <ClInclude Include="Game\World.h">
       <Filter>Game</Filter>
     </ClInclude>
-    <ClInclude Include="MainMenu.h">
+    <ClInclude Include="Dialogue.h">
       <Filter>Game</Filter>
     </ClInclude>
-    <ClInclude Include="Dialogue.h">
+    <ClInclude Include="Game\MainMenu.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\EndGame.h">
       <Filter>Game</Filter>
     </ClInclude>
   </ItemGroup>

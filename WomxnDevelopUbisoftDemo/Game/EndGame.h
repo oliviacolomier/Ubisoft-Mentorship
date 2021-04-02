@@ -1,16 +1,15 @@
 #pragma once
-class MainMenu: public sf::Drawable
+class EndGame: public sf::Drawable
 {
 public:
-	MainMenu();
+	EndGame();
 
 	void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 
 private:
-
-	sf::Sprite menuBackground;
-	sf::Texture m_Texture;
 	sf::Text m_Text;
 	sf::Font m_Font;
+
+
 };
 

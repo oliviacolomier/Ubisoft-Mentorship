@@ -37,7 +37,6 @@ MainCharacter::MainCharacter()
     m_Texture.loadFromFile(".\\Assets\\tiger.gif");
     const sf::Vector2f size(static_cast<float>(m_Texture.getSize().x), static_cast<float>(m_Texture.getSize().y));
     m_Sprite.setTexture(m_Texture);
-    //m_Sprite.setOrigin(size * 0.5f);
     m_Sprite.setPosition(m_Position);
     m_Sprite.setScale(0.9f, 0.9f);
    
@@ -146,13 +145,18 @@ void MainCharacter::startEndGame()
 void MainCharacter::updateFrameCounter()
 {
 
-    m_frameCounter += m_frameSpeed * m_Clock.restart().asSeconds();
-    if (m_frameCounter >= m_switchFrame)
+    m_FrameCounter += m_FrameSpeed * m_Clock.restart().asSeconds();
+    if (m_FrameCounter >= m_SwitchFrame)
     {
-        m_frameCounter = 0;
+        m_FrameCounter = 0;
         source.x++;
         if (source.x * 48 >= m_Texture.getSize().x)
             source.x = 0;
     }
+}
+
+void MainCharacter::resetPosition()
+{
+    m_Position = sf::Vector2f(400.0f, 300.0f);
 }
 
