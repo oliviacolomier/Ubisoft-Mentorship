@@ -11,9 +11,21 @@ EndGame::EndGame()
 	m_Text.setFillColor(sf::Color::Red);
 	m_Text.setStyle(sf::Text::Bold);
 
+	if(!m_Buffer.loadFromFile(".\\Assets\\deathsound.ogg"))
+	{
+		printf("Error loading sound");
+	}
+
+	m_DeathSound.setBuffer(m_Buffer);
 }
 
 void EndGame::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
 	target.draw(m_Text);
+}
+
+void EndGame::playDeathSound()
+{
+	m_DeathSound.play();
+
 }

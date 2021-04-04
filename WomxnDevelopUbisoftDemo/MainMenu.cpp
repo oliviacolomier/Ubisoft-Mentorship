@@ -5,7 +5,6 @@ MainMenu::MainMenu()
 {
 
 	m_Font.loadFromFile(".\\Assets\\BunnyBaby.otf");
-
 	m_Texture.loadFromFile(".\\Assets\\menu_background.jpg");
 	menuBackground.setTexture(m_Texture);
 
@@ -16,12 +15,17 @@ MainMenu::MainMenu()
 	m_Text.setFillColor(sf::Color::Black);
 	m_Text.setStyle(sf::Text::Bold);
 
+	m_Text2.setFont(m_Font);
+	m_Text2.setPosition(235.0f, 350.0f);
+	m_Text2.setCharacterSize(20.0f);
+	m_Text2.setString("Use 'A' 'W' 'S' 'D' to control the character");
+	m_Text2.setFillColor(sf::Color::Black);
+	//m_Text.setStyle(sf::Text::Bold);
+
 	if (!m_Music.openFromFile(".\\Assets\\ForestHaven.ogg"))
 	{
 		printf("Error, music doesn't load");
 	}
-	
-	
 
 }
 
@@ -29,6 +33,7 @@ void MainMenu::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
 	target.draw(menuBackground);
 	target.draw(m_Text);
+	target.draw(m_Text2);
 	
 }
 
