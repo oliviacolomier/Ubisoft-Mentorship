@@ -5,6 +5,7 @@
 #include <Game/World.h>
 #include <Game/MainMenu.h>
 #include <Game/EndGame.h>
+#include <Game/Dialogue.h>
 
 class GameDemo : public Game
 {
@@ -28,6 +29,7 @@ private:
     Gamestate m_CurrentState;
     MainCharacter m_MainCharacter;
     World m_World;
+    Dialogue m_Dialogue;
     EndGame m_Endgame;
 
     

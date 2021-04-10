@@ -7,7 +7,7 @@ GameDemo::GameDemo()
 
 {
     m_CurrentState = Gamestate::Menu;
-    m_Menu.playMusic();
+   // m_Menu.playMusic();
   
     
 
@@ -39,12 +39,22 @@ void GameDemo::update(float deltaTime)
             m_Endgame.playDeathSound();
             m_CurrentState = Gamestate::Endgame;
         }
-
+        if (m_MainCharacter.GetBoundingBox().intersects(m_World.rect3.getGlobalBounds()))
+        {
+            m_CurrentState = Gamestate::Dialogue;
+        }
+        
         break;
     }
 
     case Gamestate::Dialogue:
-    { //update dialogue
+    { 
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
+        {
+            m_MainCharacter.resetPosition();
+            m_CurrentState = Gamestate::Gameplay;
+        }
+
         break;
     }
 
@@ -71,7 +81,7 @@ void GameDemo::update(float deltaTime)
         break;
 
     }
-
+  
    }
     
 }
@@ -93,6 +103,10 @@ void GameDemo::render(sf::RenderTarget& target)
     {
         target.draw(m_Endgame);
 
+    }
+    if (m_CurrentState == Gamestate::Dialogue)
+    {
+        target.draw(m_Dialogue);
     }
 
 }

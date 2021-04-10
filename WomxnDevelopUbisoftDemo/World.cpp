@@ -3,6 +3,7 @@
 
 World::World()
 {
+	
 
 	rect1.setSize(sf::Vector2f(50.0f, 50.0f));
 	rect1.setFillColor(sf::Color::Red);
@@ -11,6 +12,16 @@ World::World()
 	rect2.setSize(sf::Vector2f(50.0f, 50.0f));
 	rect2.setFillColor(sf::Color::Red);
 	rect2.setPosition(sf::Vector2f(70.0f, 30.0f));
+
+	rect3.setSize(sf::Vector2f(50.0f, 50.0f));
+	rect3.setFillColor(sf::Color::Red);
+	rect3.setPosition(sf::Vector2f(580.0f, 350.0f));
+
+	m_Texture.loadFromFile(".\\Assets\\tree.gif");
+	m_Tree.setTexture(m_Texture);
+	m_Tree.setPosition(sf::Vector2f(650.0f, 300.0f));
+	m_Tree.setScale(-0.9f, 0.9f);
+
 
 
 	const int level[] =
@@ -99,6 +110,7 @@ void World::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
 	target.draw(rect1);
 	target.draw(rect2);
+	target.draw(rect3);
 
 	//apply the transform
 	states.transform *= getTransform();
@@ -109,6 +121,9 @@ void World::draw(sf::RenderTarget& target, sf::RenderStates states) const
 	//draw the vertex array
 	target.draw(m_Vertices, states);
 
+	target.draw(m_Tree);
+
+	
 	
 
 }

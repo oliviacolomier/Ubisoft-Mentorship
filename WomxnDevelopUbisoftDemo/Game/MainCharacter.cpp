@@ -35,7 +35,6 @@ MainCharacter::MainCharacter()
     : m_IsPlayingEndGame(false), m_Position(400.0f, 300.0f), m_IsUsingJoystick(false), m_JoystickIndex(0), m_WasButtonPressed(false)
 {
     m_Texture.loadFromFile(".\\Assets\\tiger.gif");
-    const sf::Vector2f size(static_cast<float>(m_Texture.getSize().x), static_cast<float>(m_Texture.getSize().y));
     m_Sprite.setTexture(m_Texture);
     m_Sprite.setPosition(m_Position);
     m_Sprite.setScale(0.9f, 0.9f);
