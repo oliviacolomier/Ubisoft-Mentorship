@@ -8,6 +8,7 @@ GameDemo::GameDemo()
 {
     m_CurrentState = Gamestate::Menu;
    // m_Menu.playMusic();
+
   
     
 
@@ -106,6 +107,8 @@ void GameDemo::render(sf::RenderTarget& target)
     }
     if (m_CurrentState == Gamestate::Dialogue)
     {
+        target.draw(m_World);
+        target.draw(m_MainCharacter);
         target.draw(m_Dialogue);
     }
 

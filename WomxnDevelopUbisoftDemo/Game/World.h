@@ -6,6 +6,8 @@ public:
 	
 	bool load(const std::string& tileset, sf::Vector2u tilesize, const int* tiles, unsigned int width, unsigned int height);
 	
+	
+
 	//make private with accessors
 	sf::RectangleShape rect1;
 	sf::RectangleShape rect2;

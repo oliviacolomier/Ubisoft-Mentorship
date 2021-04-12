@@ -106,6 +106,7 @@ bool World::load(const std::string& tileset, sf::Vector2u tileSize, const int* t
 	return false;
 }
 
+
 void World::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
 	target.draw(rect1);
