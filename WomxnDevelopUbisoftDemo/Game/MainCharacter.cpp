@@ -154,8 +154,8 @@ void MainCharacter::updateFrameCounter()
     }
 }
 
-void MainCharacter::resetPosition()
+void MainCharacter::resetPosition(sf::Vector2f position)
 {
-    m_Position = sf::Vector2f(400.0f, 300.0f);
+    m_Position = position;
 }
 

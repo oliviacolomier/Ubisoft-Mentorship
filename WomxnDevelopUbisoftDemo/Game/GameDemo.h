@@ -6,6 +6,7 @@
 #include <Game/MainMenu.h>
 #include <Game/EndGame.h>
 #include <Game/Dialogue.h>
+#include <Game/InstructionMenu.h>
 
 class GameDemo : public Game
 {
@@ -31,6 +32,7 @@ private:
     World m_World;
     Dialogue m_Dialogue;
     EndGame m_Endgame;
+    InstructionMenu m_Instruction;
 
     
 };

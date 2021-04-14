@@ -8,10 +8,6 @@ GameDemo::GameDemo()
 {
     m_CurrentState = Gamestate::Menu;
    // m_Menu.playMusic();
-
-  
-    
-
 }
 
 void GameDemo::update(float deltaTime)
@@ -37,12 +33,13 @@ void GameDemo::update(float deltaTime)
 
         if (m_MainCharacter.GetBoundingBox().intersects(m_World.rect2.getGlobalBounds()))
         {
-            m_Endgame.playDeathSound();
-            m_CurrentState = Gamestate::Endgame;
+            //m_Endgame.playDeathSound();
+            //m_CurrentState = Gamestate::Endgame;
         }
         if (m_MainCharacter.GetBoundingBox().intersects(m_World.rect3.getGlobalBounds()))
         {
             m_CurrentState = Gamestate::Dialogue;
+
         }
         
         break;
@@ -52,7 +49,7 @@ void GameDemo::update(float deltaTime)
     { 
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
         {
-            m_MainCharacter.resetPosition();
+            m_MainCharacter.resetPosition(sf::Vector2f(500.0f,340.0f));
             m_CurrentState = Gamestate::Gameplay;
         }
 
@@ -65,6 +62,7 @@ void GameDemo::update(float deltaTime)
         {
             m_CurrentState = Gamestate::Gameplay;
         }
+        
 
         break;
     }
@@ -74,7 +72,7 @@ void GameDemo::update(float deltaTime)
 
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
         {
-            m_MainCharacter.resetPosition();
+            m_MainCharacter.resetPosition(sf::Vector2f(400.0f,300.0f));
             m_CurrentState = Gamestate::Menu;
 
         }
@@ -93,12 +91,26 @@ void GameDemo::render(sf::RenderTarget& target)
 
     if (m_CurrentState == Gamestate::Menu)
     {
-        target.draw(m_Menu);
+ 
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::I))
+        {
+            target.draw(m_Instruction);
+        }
+        else
+            target.draw(m_Menu);
     }
     if(m_CurrentState == Gamestate::Gameplay)
     {
-        target.draw(m_World);
-        target.draw(m_MainCharacter);
+        if (m_MainCharacter.GetBoundingBox().intersects(m_World.rect2.getGlobalBounds()))
+        {
+            printf("yes");
+            target.draw(m_MainCharacter);
+        }
+        else
+        {
+            target.draw(m_World);
+            target.draw(m_MainCharacter);
+        }
     }
     if (m_CurrentState == Gamestate::Endgame)
     {

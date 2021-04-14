@@ -16,11 +16,11 @@ MainMenu::MainMenu()
 	m_Text.setStyle(sf::Text::Bold);
 
 	m_Text2.setFont(m_Font);
-	m_Text2.setPosition(235.0f, 350.0f);
+	m_Text2.setPosition(250.0f, 350.0f);
 	m_Text2.setCharacterSize(20.0f);
-	m_Text2.setString("Use 'A' 'W' 'S' 'D' to control the character");
+	m_Text2.setString("Press 'I' for instructions");
 	m_Text2.setFillColor(sf::Color::Black);
-	//m_Text.setStyle(sf::Text::Bold);
+	
 
 	if (!m_Music.openFromFile(".\\Assets\\ForestHaven.ogg"))
 	{

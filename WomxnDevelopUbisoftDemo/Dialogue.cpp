@@ -18,17 +18,6 @@ Dialogue::Dialogue()
 	m_Text.setString("Hello, go to the building.");
 	m_Text.setFillColor(sf::Color::Black);
 
-	//load dialogue from file
-	std::ifstream file("dialogue.txt");
-	while (file >> m_Input) //read through file until there is nothing left
-	{
-		dialogue.push_back(m_Input);
-	}
-
-	for (std::string dialogues : dialogue)
-	{
-		std::cout << dialogues;
-	}
 }
 
 void Dialogue::draw(sf::RenderTarget& target, sf::RenderStates states) const
@@ -37,7 +26,3 @@ void Dialogue::draw(sf::RenderTarget& target, sf::RenderStates states) const
 	target.draw(m_Text);
 }
 
-void Dialogue::playDialogue()
-{
-
-}

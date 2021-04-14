@@ -11,7 +11,7 @@ public:
 	void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
 	void startEndGame();
 	void updateFrameCounter();
-	void resetPosition();
+	void resetPosition(sf::Vector2f position);
 
 
 private:
