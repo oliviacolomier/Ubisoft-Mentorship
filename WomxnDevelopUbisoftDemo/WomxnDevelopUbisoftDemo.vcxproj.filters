@@ -47,7 +47,6 @@
     <ClCompile Include="InstructionMenu.cpp">
       <Filter>Game</Filter>
     </ClCompile>
-    <ClCompile Include="World2.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h" />
@@ -87,7 +86,6 @@
     <ClInclude Include="Game\InstructionMenu.h">
       <Filter>Game</Filter>
     </ClInclude>
-    <ClInclude Include="World2.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Game">

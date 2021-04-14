@@ -8,6 +8,7 @@
 #include <Game/Dialogue.h>
 #include <Game/InstructionMenu.h>
 
+
 class GameDemo : public Game
 {
 public:
@@ -24,8 +25,6 @@ public:
 
 private:
 
-
-   
     MainMenu m_Menu;
     Gamestate m_CurrentState;
     MainCharacter m_MainCharacter;
@@ -33,6 +32,11 @@ private:
     Dialogue m_Dialogue;
     EndGame m_Endgame;
     InstructionMenu m_Instruction;
+    World* m_CurrentWorld = nullptr;
+
+    
+
+    
 
     
 };

@@ -8,10 +8,14 @@ GameDemo::GameDemo()
 {
     m_CurrentState = Gamestate::Menu;
    // m_Menu.playMusic();
+    m_CurrentWorld = &m_World;
+
+    
 }
 
 void GameDemo::update(float deltaTime)
 {
+    
 
    switch (m_CurrentState)
    {
@@ -33,9 +37,12 @@ void GameDemo::update(float deltaTime)
 
         if (m_MainCharacter.GetBoundingBox().intersects(m_World.rect2.getGlobalBounds()))
         {
-            //m_Endgame.playDeathSound();
-            //m_CurrentState = Gamestate::Endgame;
+           
+            m_CurrentWorld->createWorld("level2");
+            m_MainCharacter.resetPosition(sf::Vector2f(16.0f,544.0f));
+            
         }
+
         if (m_MainCharacter.GetBoundingBox().intersects(m_World.rect3.getGlobalBounds()))
         {
             m_CurrentState = Gamestate::Dialogue;
@@ -101,16 +108,11 @@ void GameDemo::render(sf::RenderTarget& target)
     }
     if(m_CurrentState == Gamestate::Gameplay)
     {
-        if (m_MainCharacter.GetBoundingBox().intersects(m_World.rect2.getGlobalBounds()))
-        {
-            printf("yes");
-            target.draw(m_MainCharacter);
-        }
-        else
-        {
-            target.draw(m_World);
-            target.draw(m_MainCharacter);
-        }
+      
+         target.draw(m_World);
+         target.draw(m_MainCharacter);
+            
+     
     }
     if (m_CurrentState == Gamestate::Endgame)
     {
