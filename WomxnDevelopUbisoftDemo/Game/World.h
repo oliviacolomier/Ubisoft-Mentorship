@@ -7,6 +7,7 @@ public:
 	
 	bool load(const std::string& tileset, sf::Vector2u tilesize, const int* tiles, unsigned int width, unsigned int height);
 	void createWorld(std::string worldName);
+	void updatePosition(sf::Vector2f position);
 
 	//make private with accessors
 	sf::RectangleShape rect1;
@@ -21,6 +22,8 @@ private:
 	sf::Texture m_Tileset;
 	sf::Sprite m_Tree;
 	sf::Texture m_Texture;
+	sf::Vector2f m_Position;
+	
 
 };
 
