@@ -47,6 +47,7 @@
     <ClCompile Include="InstructionMenu.cpp">
       <Filter>Game</Filter>
     </ClCompile>
+    <ClCompile Include="Enemy.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h" />
@@ -86,6 +87,7 @@
     <ClInclude Include="Game\InstructionMenu.h">
       <Filter>Game</Filter>
     </ClInclude>
+    <ClInclude Include="Enemy.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Game">
