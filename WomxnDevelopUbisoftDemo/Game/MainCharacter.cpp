@@ -49,6 +49,7 @@ void MainCharacter::update(float deltaTime)
 {
 
 
+    
     if (m_IsPlayingEndGame)
     {
         return;
@@ -128,6 +129,21 @@ void MainCharacter::update(float deltaTime)
     m_Position += m_Velocity * deltaTime;
     m_Sprite.setPosition(m_Position);
     SetCenter(m_Position);
+
+    //Window Collision
+    //Left Collision
+    if (m_Sprite.getPosition().x < 0.f)
+        m_Sprite.setPosition(0, m_Sprite.getPosition().y);
+    //Top Collision
+    if (m_Sprite.getPosition().y < 0.f)
+        m_Sprite.setPosition(m_Sprite.getPosition().x, 0.0f);
+    //Right Collision
+    if (m_Sprite.getPosition().x + m_Sprite.getGlobalBounds().width > 800.0f)
+        m_Sprite.setPosition(800 - m_Sprite.getGlobalBounds().width, m_Sprite.getPosition().y);
+    //Bottom Collision
+    if (m_Sprite.getPosition().y + m_Sprite.getGlobalBounds().height > 600.0f)
+        m_Sprite.setPosition(m_Sprite.getPosition().x, 600 - m_Sprite.getGlobalBounds().height);
+    
 }
 
 

@@ -13,15 +13,25 @@ World::World()
 	rect2.setFillColor(sf::Color::Red);
 	rect2.setPosition(m_Position);
 
-	updatePosition(sf::Vector2f(650.0f, 300.0f));
+	updatePosition(sf::Vector2f(650.0f, 320.0f));
 	rect3.setSize(sf::Vector2f(50.0f, 50.0f));
 	rect3.setFillColor(sf::Color::Red);
-	rect3.setPosition(sf::Vector2f(580.0f, 350.0f));
+	rect3.setPosition(sf::Vector2f(550.0f,350.0f));
+	
+	rect4.setSize(sf::Vector2f(50.0f, 50.0f));
+	rect4.setFillColor(sf::Color::Red);
+	
 
 	m_Texture.loadFromFile(".\\Assets\\tree.gif");
 	m_Tree.setTexture(m_Texture);
 	m_Tree.setPosition(m_Position);
 	m_Tree.setScale(-0.9f, 0.9f);
+
+	m_Texture2.loadFromFile(".\\Assets\\water.gif");
+	m_Water.setTexture(m_Texture2);
+	m_Water.setPosition(sf::Vector2f(100.0f,100.0f));
+	m_Water.setScale(0.09f, 0.09f);
+
 
 	createWorld("level1");
 
@@ -87,7 +97,10 @@ void World::createWorld(std::string worldName)
 		rect1.setPosition(m_Position);
 		rect2.setPosition(m_Position);
 		rect3.setPosition(m_Position);
+		rect4.setPosition(700.0f, 300.0f);
 		m_Tree.setPosition(m_Position);
+		m_Water.setPosition(700.0f, 300.0f);
+	
 
 		const int level2[] =
 		{
@@ -124,6 +137,8 @@ void World::createWorld(std::string worldName)
 	}
 	else
 	{
+		rect4.setPosition(-100.0f, -100.0f);
+		m_Water.setPosition(-100.0f, - 100.0f);
 
 		const int level[] =
 		{
@@ -139,19 +154,20 @@ void World::createWorld(std::string worldName)
 			46, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47,47, 47, 47, 47, 47,
 			46, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47,47, 47, 47, 47, 47,
 			46, 47, 47, 47, 47, 47, 47, 47, 47, 292, 293, 47, 47, 47, 47, 47, 47, 47, 47, 47,47, 47, 47, 47, 47,
-			70, 70, 70, 70, 70, 70, 47, 47, 47, 264, 265, 47, 47, 47, 47, 47, 47, 47, 47, 47,47, 47, 47, 47, 47,
-			376, 376, 376, 376, 421, 376, 46, 47, 47, 258, 259, 47, 47, 47, 47, 47, 47, 47, 47, 47,47, 47, 47, 47, 47,
-			23, 24, 24,24 , 25, 419, 46, 47, 47, 258, 259, 47, 47, 47, 47, 47, 47, 47, 47, 47,47, 47, 47, 47, 47,
-			46, 47, 47, 47, 48, 442, 46, 47, 47, 258, 259, 47, 47, 47, 47, 47, 47, 47, 47, 47,47, 47, 47, 47, 47,
-			69, 70, 70, 70, 71, 421, 69, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70,70, 70, 70, 70, 70,
-			368, 376, 376, 376, 376, 376, 376, 376, 376, 376, 376, 376, 376, 376, 376, 376, 376, 376, 376, 376,376, 376, 376, 376, 376,
-			368, 376, 376, 376, 376, 376, 376, 376, 376, 376, 376, 376, 376, 376, 376, 376, 376, 376, 376, 376,376, 376, 376, 376, 378,
+			46, 47, 47, 47, 47, 47, 47, 47, 47, 264, 265, 47, 47, 47, 47, 47, 47, 47, 47, 47,47, 47, 47, 47, 47,
+			46, 47, 47, 47, 47, 47, 47, 47, 47, 258, 259, 47, 47, 47, 47, 47, 47, 47, 47, 47,47, 47, 47, 47, 47,
+			46, 47, 47,47 , 47, 47, 47, 47, 47, 258, 259, 47, 47, 47, 47, 47, 47, 47, 47, 47,47, 47, 47, 47, 47,
+			46, 47, 47, 47, 47, 47, 47, 47, 47, 258, 259, 47, 47, 47, 47, 47, 47, 47, 47, 47,47, 47, 47, 47, 47,
+			46, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47,
+			46, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47,
+			46, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47,47,47, 47, 47, 47, 47,
 
 
 
 		};
 
 		load(("Assets\\tile_map.bmp"), sf::Vector2u(32, 32), level, 25, 19);
+
 	}
 }
 
@@ -164,9 +180,11 @@ void World::updatePosition(sf::Vector2f newPosition)
 void World::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
 	
-	target.draw(rect1);
-	target.draw(rect2);
-	target.draw(rect3);
+	//target.draw(rect1);
+	//target.draw(rect2);
+	//target.draw(rect3);
+	//target.draw(rect4);
+	
 
 	//apply the transform
 	states.transform *= getTransform();
@@ -178,6 +196,20 @@ void World::draw(sf::RenderTarget& target, sf::RenderStates states) const
 	target.draw(m_Vertices, states);
 
 	target.draw(m_Tree);
+	target.draw(m_Water);
+
+	target.draw(rect1);
+	target.draw(rect2);
+	target.draw(rect3);
+	target.draw(rect4);
 
 }
+void World::treeResetPoisiton(sf::Vector2f position)
+{
+	m_Tree.setPosition(position);
+}
 
+void World::rect3ResetPoisiton(sf::Vector2f position)
+{
+	rect3.setPosition(position);
+}

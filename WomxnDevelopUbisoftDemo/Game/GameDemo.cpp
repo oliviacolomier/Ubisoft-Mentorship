@@ -7,7 +7,7 @@ GameDemo::GameDemo()
 
 {
     m_CurrentState = Gamestate::Menu;
-   // m_Menu.playMusic();
+    m_Menu.playMusic();
     m_CurrentWorld = &m_World;
 
     
@@ -22,17 +22,25 @@ void GameDemo::update(float deltaTime)
 
     case Gamestate::Gameplay:
     {
+
         m_MainCharacter.update(deltaTime);
+        
 
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::M))
         {
             m_CurrentState = Gamestate::Menu;
         }
 
-        if (m_MainCharacter.GetBoundingBox().intersects(m_World.rect1.getGlobalBounds()))
+        if (m_MainCharacter.GetBoundingBox().intersects(m_World.rect4.getGlobalBounds()))
         {
-            m_Endgame.playDeathSound();
-            m_CurrentState = Gamestate::Endgame;
+            m_CurrentWorld->createWorld("level1");
+            level2 = false;
+            m_World.treeResetPoisiton(sf::Vector2f(650.0f, 320.0f));
+            m_World.rect3ResetPoisiton(sf::Vector2f(550.0f, 320.0f));
+            m_MainCharacter.resetPosition(sf::Vector2f(70.0f, 30.0f));
+            m_Dialogue.updateDialogue();
+            endGame = true;
+
         }
 
         if (m_MainCharacter.GetBoundingBox().intersects(m_World.rect2.getGlobalBounds()))
@@ -40,13 +48,14 @@ void GameDemo::update(float deltaTime)
            
             m_CurrentWorld->createWorld("level2");
             m_MainCharacter.resetPosition(sf::Vector2f(16.0f,544.0f));
+            level2 = true;
+           
             
         }
 
         if (m_MainCharacter.GetBoundingBox().intersects(m_World.rect3.getGlobalBounds()))
         {
             m_CurrentState = Gamestate::Dialogue;
-
         }
         
         break;
@@ -58,6 +67,10 @@ void GameDemo::update(float deltaTime)
         {
             m_MainCharacter.resetPosition(sf::Vector2f(500.0f,340.0f));
             m_CurrentState = Gamestate::Gameplay;
+            if (endGame == true)
+            {
+                m_CurrentState = Gamestate::Endgame;
+            }
         }
 
         break;
@@ -77,7 +90,7 @@ void GameDemo::update(float deltaTime)
     case Gamestate::Endgame:
     {
 
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter))
         {
             m_MainCharacter.resetPosition(sf::Vector2f(400.0f,300.0f));
             m_CurrentState = Gamestate::Menu;
@@ -111,8 +124,8 @@ void GameDemo::render(sf::RenderTarget& target)
       
          target.draw(m_World);
          target.draw(m_MainCharacter);
-            
-     
+        
+         
     }
     if (m_CurrentState == Gamestate::Endgame)
     {

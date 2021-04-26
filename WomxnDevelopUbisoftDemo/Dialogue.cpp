@@ -1,5 +1,5 @@
 #include "stdafx.h"
-#include "Dialogue.h"
+#include "Game/Dialogue.h"
 
 
 Dialogue::Dialogue()
@@ -18,11 +18,22 @@ Dialogue::Dialogue()
 	m_Text.setString("Hello, go to the building.");
 	m_Text.setFillColor(sf::Color::Black);
 
+	/*m_Text2.setPosition(200.0f, 430.0f);
+	m_Font.loadFromFile(".\\Assets\\BunnyBaby.otf");
+	m_Text2.setFont(m_Font);
+	m_Text2.setCharacterSize(30.0f);
+	m_Text2.setFillColor(sf::Color::Black);*/
+
 }
 
 void Dialogue::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
 	target.draw(m_TextBox);
 	target.draw(m_Text);
+}
+
+void Dialogue::updateDialogue()
+{
+	m_Text.setString("Thank you for the water. Have a good day.");
 }
 

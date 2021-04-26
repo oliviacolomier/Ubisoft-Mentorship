@@ -9,6 +9,7 @@
 #include <Game/InstructionMenu.h>
 
 
+
 class GameDemo : public Game
 {
 public:
@@ -34,7 +35,8 @@ private:
     InstructionMenu m_Instruction;
     World* m_CurrentWorld = nullptr;
 
-    
+    bool level2 = false;
+    bool endGame;
 
     
 

@@ -7,7 +7,7 @@ MainMenu::MainMenu()
 	m_Font.loadFromFile(".\\Assets\\BunnyBaby.otf");
 	m_Texture.loadFromFile(".\\Assets\\menu_background.jpg");
 	menuBackground.setTexture(m_Texture);
-
+	menuBackground.setScale(0.6f, 0.6f);
 	m_Text.setFont(m_Font);
 	m_Text.setPosition(225.0f, 250.0f);
 	m_Text.setCharacterSize(50.0f);
@@ -16,7 +16,7 @@ MainMenu::MainMenu()
 	m_Text.setStyle(sf::Text::Bold);
 
 	m_Text2.setFont(m_Font);
-	m_Text2.setPosition(250.0f, 350.0f);
+	m_Text2.setPosition(300.0f, 300.0f);
 	m_Text2.setCharacterSize(20.0f);
 	m_Text2.setString("Press 'I' for instructions");
 	m_Text2.setFillColor(sf::Color::Black);
