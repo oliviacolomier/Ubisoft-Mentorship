@@ -31,19 +31,9 @@ void GameDemo::update(float deltaTime)
             m_CurrentState = Gamestate::Menu;
         }
 
-        if (m_MainCharacter.GetBoundingBox().intersects(m_World.rect4.getGlobalBounds()))
-        {
-            m_CurrentWorld->createWorld("level1");
-            level2 = false;
-            m_World.treeResetPoisiton(sf::Vector2f(650.0f, 320.0f));
-            m_World.rect3ResetPoisiton(sf::Vector2f(550.0f, 320.0f));
-            m_MainCharacter.resetPosition(sf::Vector2f(70.0f, 30.0f));
-            m_Dialogue.updateDialogue();
-            endGame = true;
 
-        }
-
-        if (m_MainCharacter.GetBoundingBox().intersects(m_World.rect2.getGlobalBounds()))
+ 
+        if (m_MainCharacter.GetBoundingBox().intersects(m_World.rect1.getGlobalBounds()))
         {
            
             m_CurrentWorld->createWorld("level2");
@@ -53,11 +43,23 @@ void GameDemo::update(float deltaTime)
             
         }
 
-        if (m_MainCharacter.GetBoundingBox().intersects(m_World.rect3.getGlobalBounds()))
+        if (m_MainCharacter.GetBoundingBox().intersects(m_World.rect2.getGlobalBounds()))
         {
             m_CurrentState = Gamestate::Dialogue;
         }
-        
+
+        if (m_MainCharacter.GetBoundingBox().intersects(m_World.rect3.getGlobalBounds()))
+        {
+            m_CurrentWorld->createWorld("level1");
+            level2 = false;
+            m_World.treeResetPositon(sf::Vector2f(650.0f, 320.0f));
+            m_World.rect2ResetPoisiton(sf::Vector2f(550.0f, 320.0f));
+            m_MainCharacter.resetPosition(sf::Vector2f(70.0f, 30.0f));
+            m_Dialogue.updateDialogue();
+            endGame = true;
+
+        }
+
         break;
     }
 
@@ -69,6 +71,7 @@ void GameDemo::update(float deltaTime)
             m_CurrentState = Gamestate::Gameplay;
             if (endGame == true)
             {
+                m_World.updateTree();
                 m_CurrentState = Gamestate::Endgame;
             }
         }
@@ -129,6 +132,7 @@ void GameDemo::render(sf::RenderTarget& target)
     }
     if (m_CurrentState == Gamestate::Endgame)
     {
+        target.draw(m_World);
         target.draw(m_Endgame);
 
     }

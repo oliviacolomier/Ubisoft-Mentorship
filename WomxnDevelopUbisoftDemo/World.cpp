@@ -3,23 +3,19 @@
 
 World::World()
 {
-	updatePosition(sf::Vector2f(290.0f, 350.0f));
+
+	updatePosition(sf::Vector2f(70.0f, 30.0f));
 	rect1.setSize(sf::Vector2f(50.0f, 50.0f));
 	rect1.setFillColor(sf::Color::Red);
 	rect1.setPosition(m_Position);
 
-	updatePosition(sf::Vector2f(70.0f, 30.0f));
+	updatePosition(sf::Vector2f(650.0f, 350.0f));
 	rect2.setSize(sf::Vector2f(50.0f, 50.0f));
-	rect2.setFillColor(sf::Color::Red);
-	rect2.setPosition(m_Position);
-
-	updatePosition(sf::Vector2f(650.0f, 320.0f));
-	rect3.setSize(sf::Vector2f(50.0f, 50.0f));
-	rect3.setFillColor(sf::Color::Red);
-	rect3.setPosition(sf::Vector2f(550.0f,350.0f));
+	rect2.setFillColor(sf::Color::Blue);
+	rect2.setPosition(sf::Vector2f(550.0f,350.0f));
 	
-	rect4.setSize(sf::Vector2f(50.0f, 50.0f));
-	rect4.setFillColor(sf::Color::Red);
+	rect3.setSize(sf::Vector2f(50.0f, 50.0f));
+	rect3.setFillColor(sf::Color::Green);
 	
 
 	m_Texture.loadFromFile(".\\Assets\\tree.gif");
@@ -96,8 +92,7 @@ void World::createWorld(std::string worldName)
 		updatePosition(sf::Vector2f(-100.0f, -100.0f));
 		rect1.setPosition(m_Position);
 		rect2.setPosition(m_Position);
-		rect3.setPosition(m_Position);
-		rect4.setPosition(700.0f, 300.0f);
+		rect3.setPosition(700.0f, 300.0f);
 		m_Tree.setPosition(m_Position);
 		m_Water.setPosition(700.0f, 300.0f);
 	
@@ -137,7 +132,7 @@ void World::createWorld(std::string worldName)
 	}
 	else
 	{
-		rect4.setPosition(-100.0f, -100.0f);
+		rect3.setPosition(-100.0f, -100.0f);
 		m_Water.setPosition(-100.0f, - 100.0f);
 
 		const int level[] =
@@ -153,11 +148,11 @@ void World::createWorld(std::string worldName)
 			46, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47,47, 47, 47, 47, 47,
 			46, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47,47, 47, 47, 47, 47,
 			46, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47,47, 47, 47, 47, 47,
-			46, 47, 47, 47, 47, 47, 47, 47, 47, 292, 293, 47, 47, 47, 47, 47, 47, 47, 47, 47,47, 47, 47, 47, 47,
-			46, 47, 47, 47, 47, 47, 47, 47, 47, 264, 265, 47, 47, 47, 47, 47, 47, 47, 47, 47,47, 47, 47, 47, 47,
-			46, 47, 47, 47, 47, 47, 47, 47, 47, 258, 259, 47, 47, 47, 47, 47, 47, 47, 47, 47,47, 47, 47, 47, 47,
-			46, 47, 47,47 , 47, 47, 47, 47, 47, 258, 259, 47, 47, 47, 47, 47, 47, 47, 47, 47,47, 47, 47, 47, 47,
-			46, 47, 47, 47, 47, 47, 47, 47, 47, 258, 259, 47, 47, 47, 47, 47, 47, 47, 47, 47,47, 47, 47, 47, 47,
+			46, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47,47, 47, 47, 47, 47,
+			46, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47,47, 47, 47, 47, 47,
+			46, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47,47, 47, 47, 47, 47,
+			46, 47, 47,47 , 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47,47, 47, 47, 47, 47,
+			46, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47,47, 47, 47, 47, 47,
 			46, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47,
 			46, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47,
 			46, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47,47,47, 47, 47, 47, 47,
@@ -167,7 +162,9 @@ void World::createWorld(std::string worldName)
 		};
 
 		load(("Assets\\tile_map.bmp"), sf::Vector2u(32, 32), level, 25, 19);
-
+		
+		
+		
 	}
 }
 
@@ -180,11 +177,7 @@ void World::updatePosition(sf::Vector2f newPosition)
 void World::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
 	
-	//target.draw(rect1);
-	//target.draw(rect2);
-	//target.draw(rect3);
-	//target.draw(rect4);
-	
+
 
 	//apply the transform
 	states.transform *= getTransform();
@@ -201,15 +194,37 @@ void World::draw(sf::RenderTarget& target, sf::RenderStates states) const
 	target.draw(rect1);
 	target.draw(rect2);
 	target.draw(rect3);
-	target.draw(rect4);
+
+	if (newTree == true)
+	{
+		target.draw(m_Tree2);
+	}
+
+
 
 }
-void World::treeResetPoisiton(sf::Vector2f position)
+void World::treeResetPositon(sf::Vector2f position)
 {
 	m_Tree.setPosition(position);
 }
 
-void World::rect3ResetPoisiton(sf::Vector2f position)
+void World::rect2ResetPoisiton(sf::Vector2f position)
 {
-	rect3.setPosition(position);
+	rect2.setPosition(position);
 }
+void World::updateTree()
+{
+
+	newTree = true;
+
+	m_Texture2.loadFromFile("Assets\\happy_tree.png");
+	m_Tree2.setTexture(m_Texture2);
+	m_Tree2.setScale(0.3f, 0.3f);
+	m_Tree2.setPosition(500.0f, 150.0f);
+	m_Tree.setPosition(-100.0f, -100.f);
+	
+
+}
+
+
+
