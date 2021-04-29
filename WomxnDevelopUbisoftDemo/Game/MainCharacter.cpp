@@ -3,34 +3,6 @@
 
 using namespace sf;
 
-// Joystick helpers
-namespace
-{
-    bool GetFirstJoystickIndex(unsigned int& index)
-    {
-        index = 0;
-        while (index < Joystick::Count)
-        {
-            if (Joystick::isConnected(index) && Joystick::hasAxis(index, Joystick::Axis::X) && Joystick::hasAxis(index, Joystick::Axis::Y))
-                return true;
-
-            index++;
-        }
-
-        return false;
-    }
-
-    float GetScaledAxis(unsigned int index, sf::Joystick::Axis axis, float deadZone, float scale)
-    {
-        float value = (Joystick::getAxisPosition(index, axis) / 100.0f) * scale;
-        if (value >= -deadZone && value <= deadZone)
-            return 0.0f;
-
-        return value;
-    }
-}
-
-
 MainCharacter::MainCharacter()
     : m_IsPlayingEndGame(false), m_Position(400.0f, 300.0f), m_IsUsingJoystick(false), m_JoystickIndex(0), m_WasButtonPressed(false)
 {
@@ -41,7 +13,6 @@ MainCharacter::MainCharacter()
    
 
     SetBoundingBox(50.0f,50.0f,50.0f,50.0f);
-    m_IsUsingJoystick = GetFirstJoystickIndex(m_JoystickIndex);
 }
 
 
@@ -59,31 +30,6 @@ void MainCharacter::update(float deltaTime)
     const float SPEED_INC = 10.0f;
     const float DEAD_ZONE = 5.0f;
     const float SLOWDOWN_RATE = 0.5f;
-
-    if (m_IsUsingJoystick)
-    {
-        m_Velocity.x = GetScaledAxis(m_JoystickIndex, Joystick::Axis::X, DEAD_ZONE, SPEED_MAX);
-        m_Velocity.y = GetScaledAxis(m_JoystickIndex, Joystick::Axis::Y, DEAD_ZONE, SPEED_MAX);
-
-        if (Joystick::isButtonPressed(m_JoystickIndex, 0))
-        {
-            if (!m_WasButtonPressed)
-            {
-                m_Sprite.setScale(0.8f, 0.8f);
-                m_WasButtonPressed = true;
-            }
-        }
-        else
-        {
-            if (m_WasButtonPressed)
-            {
-                m_Sprite.setScale(1.0f, 1.0f);
-                m_WasButtonPressed = false;
-            }
-        }
-    }
-    else
-    {
 
         if (Keyboard::isKeyPressed(Keyboard::D))
         {
@@ -123,7 +69,7 @@ void MainCharacter::update(float deltaTime)
             
         }
      
-    }
+   
 
     m_Sprite.setTextureRect(sf::IntRect(source.x * 48, source.y * 50, 48, 48));
     m_Position += m_Velocity * deltaTime;

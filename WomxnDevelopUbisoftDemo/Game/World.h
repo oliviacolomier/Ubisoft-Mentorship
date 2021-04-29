@@ -10,9 +10,7 @@ public:
 	void updatePosition(sf::Vector2f position);
 	void treeResetPositon(sf::Vector2f position);
 	void rect2ResetPoisiton(sf::Vector2f position);
-
 	void updateTree();
-
 
 	//make private with accessors
 	sf::RectangleShape rect1;
