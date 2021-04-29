@@ -10,7 +10,6 @@ GameDemo::GameDemo()
     m_Menu.playMusic();
     m_CurrentWorld = &m_World;
 
-    
 }
 
 void GameDemo::update(float deltaTime)

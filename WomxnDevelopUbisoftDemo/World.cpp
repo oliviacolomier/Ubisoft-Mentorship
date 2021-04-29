@@ -157,14 +157,10 @@ void World::createWorld(std::string worldName)
 			46, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47,
 			46, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47,47,47, 47, 47, 47, 47,
 
-
-
 		};
 
 		load(("Assets\\tile_map.bmp"), sf::Vector2u(32, 32), level, 25, 19);
-		
-		
-		
+
 	}
 }
 
@@ -178,6 +174,9 @@ void World::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
 	
 
+	target.draw(rect1);
+	target.draw(rect2);
+	target.draw(rect3);
 
 	//apply the transform
 	states.transform *= getTransform();
@@ -191,16 +190,11 @@ void World::draw(sf::RenderTarget& target, sf::RenderStates states) const
 	target.draw(m_Tree);
 	target.draw(m_Water);
 
-	target.draw(rect1);
-	target.draw(rect2);
-	target.draw(rect3);
 
 	if (newTree == true)
 	{
 		target.draw(m_Tree2);
 	}
-
-
 
 }
 void World::treeResetPositon(sf::Vector2f position)
