@@ -38,7 +38,4 @@ private:
     bool level2 = false;
     bool endGame;
 
-    
-
-    
 };

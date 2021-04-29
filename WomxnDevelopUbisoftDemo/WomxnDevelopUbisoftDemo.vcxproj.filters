@@ -32,19 +32,19 @@
     <ClCompile Include="Engine\Collision.cpp">
       <Filter>Game\Engine</Filter>
     </ClCompile>
-    <ClCompile Include="World.cpp">
+    <ClCompile Include="Game\InstructionMenu.cpp">
       <Filter>Game</Filter>
     </ClCompile>
-    <ClCompile Include="MainMenu.cpp">
+    <ClCompile Include="Game\MainMenu.cpp">
       <Filter>Game</Filter>
     </ClCompile>
-    <ClCompile Include="EndGame.cpp">
+    <ClCompile Include="Game\Dialogue.cpp">
       <Filter>Game</Filter>
     </ClCompile>
-    <ClCompile Include="Dialogue.cpp">
+    <ClCompile Include="Game\EndGame.cpp">
       <Filter>Game</Filter>
     </ClCompile>
-    <ClCompile Include="InstructionMenu.cpp">
+    <ClCompile Include="Game\World.cpp">
       <Filter>Game</Filter>
     </ClCompile>
   </ItemGroup>

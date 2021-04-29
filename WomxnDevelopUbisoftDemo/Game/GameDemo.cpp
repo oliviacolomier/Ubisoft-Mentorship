@@ -15,7 +15,6 @@ GameDemo::GameDemo()
 void GameDemo::update(float deltaTime)
 {
     
-
    switch (m_CurrentState)
    {
 

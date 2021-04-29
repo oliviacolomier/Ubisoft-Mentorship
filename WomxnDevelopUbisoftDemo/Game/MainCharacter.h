@@ -26,13 +26,7 @@ private:
 
 
 	sf::Vector2u source = sf::Vector2u(48, Down);
-
-
-	bool m_IsUsingJoystick;
-	unsigned int m_JoystickIndex;
-	bool m_WasButtonPressed;
-
 	sf::Vector2f m_Position; 
 	sf::Vector2f m_Velocity;
-	bool m_IsPlayingEndGame;
+
 };

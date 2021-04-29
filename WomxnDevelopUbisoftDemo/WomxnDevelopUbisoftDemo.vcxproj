@@ -207,16 +207,16 @@ xcopy /y /d  "$(SolutionDir)external\SFML-2.5.1\bin\*.dll" "$(OutDir)"</Command>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="Dialogue.cpp" />
-    <ClCompile Include="EndGame.cpp" />
     <ClCompile Include="Engine\Collision.cpp" />
     <ClCompile Include="Engine\Game.cpp" />
+    <ClCompile Include="Game\Dialogue.cpp" />
+    <ClCompile Include="Game\EndGame.cpp" />
     <ClCompile Include="Game\GameDemo.cpp" />
+    <ClCompile Include="Game\InstructionMenu.cpp" />
     <ClCompile Include="Game\MainCharacter.cpp" />
-    <ClCompile Include="InstructionMenu.cpp" />
+    <ClCompile Include="Game\MainMenu.cpp" />
+    <ClCompile Include="Game\World.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="MainMenu.cpp" />
-    <ClCompile Include="World.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\external\imgui-master\imgui.h" />
