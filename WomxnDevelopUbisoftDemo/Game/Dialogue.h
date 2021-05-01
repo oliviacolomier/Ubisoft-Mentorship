@@ -1,11 +1,12 @@
 #pragma once
 #include <fstream>
 #include <iostream>
-#include <String>
+#include <string>
+#include <vector>
 #include <Game/World.h>
 #include <Game/MainCharacter.h>
 
-class Dialogue: public sf::Drawable
+class Dialogue : public sf::Drawable
 {
 public:
 
@@ -18,11 +19,8 @@ private:
 
 	sf::RectangleShape m_TextBox;
 	sf::Text m_Text;
-	//sf::Text m_Text2;
 	sf::Font m_Font;
-	//std::string m_Input;
-	//std::vector<std::string> dialogue;
-
+	sf::String m_Dialogue;
 
 };
 

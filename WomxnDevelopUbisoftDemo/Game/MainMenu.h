@@ -5,8 +5,8 @@ public:
 	MainMenu();
 
 	void draw(sf::RenderTarget& target, sf::RenderStates states) const;
-
 	void playMusic();
+	void stopMusic();
 
 private:
 

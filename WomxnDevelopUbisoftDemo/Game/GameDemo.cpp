@@ -35,8 +35,10 @@ void GameDemo::update(float deltaTime)
         {
            
             m_CurrentWorld->createWorld("level2");
-            m_MainCharacter.resetPosition(sf::Vector2f(16.0f,544.0f));
+            m_MainCharacter.resetPosition(sf::Vector2f(40.0f,400.0f));
             level2 = true;
+            m_World.playBuildingMusic();
+            m_Menu.stopMusic();
            
             
         }
@@ -49,11 +51,14 @@ void GameDemo::update(float deltaTime)
         if (m_MainCharacter.GetBoundingBox().intersects(m_World.rect3.getGlobalBounds()))
         {
             m_CurrentWorld->createWorld("level1");
-            level2 = false;
             m_World.treeResetPositon(sf::Vector2f(650.0f, 320.0f));
-            m_World.rect2ResetPoisiton(sf::Vector2f(550.0f, 320.0f));
+            m_World.treeRectResetPoisiton(sf::Vector2f(550.0f, 320.0f));
             m_MainCharacter.resetPosition(sf::Vector2f(70.0f, 30.0f));
             m_Dialogue.updateDialogue();
+            m_World.stopBuildingMusic();
+            m_Menu.playMusic();
+
+            level2 = false;
             endGame = true;
 
         }
@@ -65,7 +70,7 @@ void GameDemo::update(float deltaTime)
     { 
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
         {
-            m_MainCharacter.resetPosition(sf::Vector2f(500.0f,340.0f));
+            m_MainCharacter.resetPosition(sf::Vector2f(520.0f,360.0f));
             m_CurrentState = Gamestate::Gameplay;
             if (endGame == true)
             {
@@ -84,7 +89,6 @@ void GameDemo::update(float deltaTime)
             m_CurrentState = Gamestate::Gameplay;
         }
         
-
         break;
     }
 

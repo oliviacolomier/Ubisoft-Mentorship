@@ -80,10 +80,10 @@
     <ClInclude Include="Game\EndGame.h">
       <Filter>Game</Filter>
     </ClInclude>
-    <ClInclude Include="Dialogue.h">
+    <ClInclude Include="Game\InstructionMenu.h">
       <Filter>Game</Filter>
     </ClInclude>
-    <ClInclude Include="Game\InstructionMenu.h">
+    <ClInclude Include="Game\Dialogue.h">
       <Filter>Game</Filter>
     </ClInclude>
   </ItemGroup>

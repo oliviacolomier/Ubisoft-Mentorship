@@ -41,3 +41,8 @@ void MainMenu::playMusic()
 {
 	m_Music.play();
 }
+
+void MainMenu::stopMusic()
+{
+	m_Music.stop();
+}

@@ -28,8 +28,19 @@ World::World()
 	m_Water.setPosition(sf::Vector2f(100.0f,100.0f));
 	m_Water.setScale(0.09f, 0.09f);
 
+	m_Texture3.loadFromFile(".\\Assets\\door.png");
+	m_Door.setTexture(m_Texture3);
+	m_Door.setPosition(-100.0f, -100.0f);
+	m_Door.setScale(0.1f, 0.1f);
+
 
 	createWorld("level1");
+
+	if (!m_BuildingMusic.openFromFile(".\\Assets\\buildingmusic.ogg"))
+	{
+		printf("Error, music doesn't load");
+	}
+
 
 }
 
@@ -92,7 +103,7 @@ void World::createWorld(std::string worldName)
 		updatePosition(sf::Vector2f(-100.0f, -100.0f));
 		rect1.setPosition(m_Position);
 		rect2.setPosition(m_Position);
-		rect3.setPosition(700.0f, 300.0f);
+		rect3.setPosition(30.0f, 520.0f);
 		m_Tree.setPosition(m_Position);
 		m_Water.setPosition(700.0f, 300.0f);
 	
@@ -128,7 +139,7 @@ void World::createWorld(std::string worldName)
 
 
 		load(("Assets\\RockTile.png"), sf::Vector2u(32, 32), level2, 25, 20);
-		
+		m_Door.setPosition(30.0f, 520.0f);
 	}
 	else
 	{
@@ -174,9 +185,7 @@ void World::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
 	
 
-	target.draw(rect1);
-	target.draw(rect2);
-	target.draw(rect3);
+	
 
 	//apply the transform
 	states.transform *= getTransform();
@@ -189,12 +198,18 @@ void World::draw(sf::RenderTarget& target, sf::RenderStates states) const
 
 	target.draw(m_Tree);
 	target.draw(m_Water);
+	target.draw(m_Door);
+	target.draw(rect1);
+	target.draw(rect2);
+	target.draw(rect3);
 
 
 	if (newTree == true)
 	{
-		target.draw(m_Tree2);
+		target.draw(m_HealthyTree);
 	}
+
+
 
 }
 void World::treeResetPositon(sf::Vector2f position)
@@ -202,7 +217,7 @@ void World::treeResetPositon(sf::Vector2f position)
 	m_Tree.setPosition(position);
 }
 
-void World::rect2ResetPoisiton(sf::Vector2f position)
+void World::treeRectResetPoisiton(sf::Vector2f position)
 {
 	rect2.setPosition(position);
 }
@@ -212,12 +227,22 @@ void World::updateTree()
 	newTree = true;
 
 	m_Texture2.loadFromFile("Assets\\happy_tree.png");
-	m_Tree2.setTexture(m_Texture2);
-	m_Tree2.setScale(0.3f, 0.3f);
-	m_Tree2.setPosition(500.0f, 150.0f);
+	m_HealthyTree.setTexture(m_Texture2);
+	m_HealthyTree.setScale(0.3f, 0.3f);
+	m_HealthyTree.setPosition(500.0f, 150.0f);
 	m_Tree.setPosition(-100.0f, -100.f);
 	
 
+}
+
+void World::playBuildingMusic()
+{
+	m_BuildingMusic.play();
+}
+
+void World::stopBuildingMusic()
+{
+	m_BuildingMusic.stop();
 }
 
 
