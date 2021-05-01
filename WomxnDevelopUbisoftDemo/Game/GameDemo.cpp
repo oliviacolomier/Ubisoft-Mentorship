@@ -62,6 +62,10 @@ void GameDemo::update(float deltaTime)
             endGame = true;
 
         }
+        if (m_MainCharacter.GetBoundingBox().intersects(m_World.waterRect.getGlobalBounds()))
+        {
+            m_World.waterResetPosition(sf::Vector2f(-100.0f,-100.0f));
+        }
 
         break;
     }

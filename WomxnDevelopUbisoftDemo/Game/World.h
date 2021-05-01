@@ -12,6 +12,7 @@ public:
 	void updatePosition(sf::Vector2f position);
 	void treeResetPositon(sf::Vector2f position);
 	void treeRectResetPoisiton(sf::Vector2f position);
+	void waterResetPosition(sf::Vector2f position);
 	void updateTree();
 	void playBuildingMusic();
 	void stopBuildingMusic();
@@ -21,6 +22,7 @@ public:
 	sf::RectangleShape rect1;
 	sf::RectangleShape rect2;
 	sf::RectangleShape rect3;
+	sf::RectangleShape waterRect;
 
 private:
 
@@ -38,6 +40,7 @@ private:
 	sf::Texture m_Texture2;
 	sf::Texture m_Texture3;
 	sf::Vector2f m_Position;
+	sf::Vector2f m_MoveOffScreen;
 	sf::Music m_BuildingMusic;
 
 	bool newTree;

@@ -3,6 +3,7 @@
 
 World::World()
 {
+	m_MoveOffScreen = sf::Vector2f(-100.0f, -100.0f);
 
 	updatePosition(sf::Vector2f(70.0f, 30.0f));
 	rect1.setSize(sf::Vector2f(50.0f, 50.0f));
@@ -14,6 +15,11 @@ World::World()
 	rect2.setFillColor(sf::Color::Blue);
 	rect2.setPosition(sf::Vector2f(550.0f,350.0f));
 	
+	updatePosition(sf::Vector2f(700.0f, 300.0f));
+	waterRect.setSize(sf::Vector2f(50.0f, 50.0f));
+	waterRect.setFillColor(sf::Color::Magenta);
+	waterRect.setPosition(sf::Vector2f(550.0f, 350.0f));
+
 	rect3.setSize(sf::Vector2f(50.0f, 50.0f));
 	rect3.setFillColor(sf::Color::Green);
 	
@@ -30,7 +36,7 @@ World::World()
 
 	m_Texture3.loadFromFile(".\\Assets\\door.png");
 	m_Door.setTexture(m_Texture3);
-	m_Door.setPosition(-100.0f, -100.0f);
+	m_Door.setPosition(m_MoveOffScreen);
 	m_Door.setScale(0.1f, 0.1f);
 
 
@@ -100,13 +106,14 @@ void World::createWorld(std::string worldName)
 
 	if (worldName == "level2") 
 	{
-		updatePosition(sf::Vector2f(-100.0f, -100.0f));
-		rect1.setPosition(m_Position);
-		rect2.setPosition(m_Position);
+		
+		rect1.setPosition(m_MoveOffScreen);
+		rect2.setPosition(m_MoveOffScreen);
 		rect3.setPosition(30.0f, 520.0f);
-		m_Tree.setPosition(m_Position);
+		m_Tree.setPosition(m_MoveOffScreen);
 		m_Water.setPosition(700.0f, 300.0f);
-	
+		waterRect.setPosition(700.0f,300.0f);
+		
 
 		const int level2[] =
 		{
@@ -143,8 +150,10 @@ void World::createWorld(std::string worldName)
 	}
 	else
 	{
-		rect3.setPosition(-100.0f, -100.0f);
-		m_Water.setPosition(-100.0f, - 100.0f);
+		rect3.setPosition(m_MoveOffScreen);
+		m_Water.setPosition(m_MoveOffScreen);
+		waterRect.setPosition(m_MoveOffScreen);
+		
 
 		const int level[] =
 		{
@@ -171,7 +180,7 @@ void World::createWorld(std::string worldName)
 		};
 
 		load(("Assets\\tile_map.bmp"), sf::Vector2u(32, 32), level, 25, 19);
-
+		m_Door.setPosition(m_MoveOffScreen);
 	}
 }
 
@@ -183,8 +192,10 @@ void World::updatePosition(sf::Vector2f newPosition)
 
 void World::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
-	
-
+	target.draw(rect1);
+	target.draw(rect2);
+	target.draw(rect3);
+	target.draw(waterRect);
 	
 
 	//apply the transform
@@ -199,9 +210,8 @@ void World::draw(sf::RenderTarget& target, sf::RenderStates states) const
 	target.draw(m_Tree);
 	target.draw(m_Water);
 	target.draw(m_Door);
-	target.draw(rect1);
-	target.draw(rect2);
-	target.draw(rect3);
+	
+	
 
 
 	if (newTree == true)
@@ -221,6 +231,10 @@ void World::treeRectResetPoisiton(sf::Vector2f position)
 {
 	rect2.setPosition(position);
 }
+void World::waterResetPosition(sf::Vector2f position)
+{
+	m_Water.setPosition(position);
+}
 void World::updateTree()
 {
 
@@ -230,8 +244,7 @@ void World::updateTree()
 	m_HealthyTree.setTexture(m_Texture2);
 	m_HealthyTree.setScale(0.3f, 0.3f);
 	m_HealthyTree.setPosition(500.0f, 150.0f);
-	m_Tree.setPosition(-100.0f, -100.f);
-	
+	m_Tree.setPosition(m_MoveOffScreen);
 
 }
 
