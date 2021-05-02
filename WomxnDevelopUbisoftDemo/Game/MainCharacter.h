@@ -9,9 +9,9 @@ public:
 
 	void update(float deltaTime);
 	void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
-	void startEndGame();
 	void updateFrameCounter();
 	void resetPosition(sf::Vector2f position);
+	void updateCharacterTexture();
 
 
 private:
@@ -21,6 +21,7 @@ private:
 	float m_FrameCounter = 0, m_SwitchFrame = 100, m_FrameSpeed = 500;
 
 	sf::Texture m_Texture;
+	sf::Texture m_WaterTexture;
 	sf::Sprite m_Sprite;
 	sf::Clock m_Clock;
 

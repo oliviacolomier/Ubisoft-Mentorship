@@ -28,9 +28,9 @@ void Dialogue::draw(sf::RenderTarget& target, sf::RenderStates states) const
 	
 }
 
-void Dialogue::updateDialogue()
+void Dialogue::updateDialogue(std::string line)
 {
 	m_Text.setPosition(150.0f, 430.0f);
-	m_Text.setString("Thank you for the water. Have a good day.");
+	m_Text.setString(line);
 }
 

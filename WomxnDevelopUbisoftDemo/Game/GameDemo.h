@@ -35,7 +35,8 @@ private:
     InstructionMenu m_Instruction;
     World* m_CurrentWorld = nullptr;
 
-    bool level2 = false;
+    bool level2;
     bool endGame;
+
 
 };

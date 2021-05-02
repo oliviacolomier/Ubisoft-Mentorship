@@ -10,6 +10,8 @@ MainCharacter::MainCharacter()
     m_Sprite.setTexture(m_Texture);
     m_Sprite.setPosition(m_Position);
     m_Sprite.setScale(0.9f, 0.9f);
+
+    m_WaterTexture.loadFromFile(".\\Assets\\tiger_blue.gif");
   
     SetBoundingBox(50.0f,50.0f,50.0f,50.0f);
 }
@@ -104,5 +106,12 @@ void MainCharacter::updateFrameCounter()
 void MainCharacter::resetPosition(sf::Vector2f position)
 {
     m_Position = position;
+}
+
+void MainCharacter::updateCharacterTexture()
+{
+    
+    m_Sprite.setTexture(m_WaterTexture);
+
 }
 

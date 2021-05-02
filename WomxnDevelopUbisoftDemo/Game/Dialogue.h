@@ -12,7 +12,7 @@ public:
 
 	Dialogue();
 	void draw(sf::RenderTarget& target, sf::RenderStates states)const override;
-	void updateDialogue();
+	void updateDialogue(std::string);
 
 
 private:
