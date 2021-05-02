@@ -274,6 +274,7 @@ void World::updateTree()
 void World::playBuildingMusic()
 {
 	m_BuildingMusic.play();
+	m_BuildingMusic.setLoop(true);
 }
 
 void World::stopBuildingMusic()

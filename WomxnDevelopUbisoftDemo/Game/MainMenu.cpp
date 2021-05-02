@@ -55,6 +55,7 @@ void MainMenu::draw(sf::RenderTarget& target, sf::RenderStates states) const
 void MainMenu::playMusic()
 {
 	m_Music.play();
+	m_Music.setLoop(true);
 }
 
 void MainMenu::stopMusic()
