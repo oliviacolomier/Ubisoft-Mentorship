@@ -10,7 +10,6 @@ Dialogue::Dialogue()
 	m_TextBox.setSize(sf::Vector2f(500.0f, 100.0f));
 	m_TextBox.setPosition(sf::Vector2f(150.0f, 430.0f));
 	
-	
 
 	m_Text.setPosition(150.0f, 440.0f);
 	m_Font.loadFromFile(".\\Assets\\arial.ttf");
@@ -25,7 +24,6 @@ void Dialogue::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
 	target.draw(m_TextBox);
 	target.draw(m_Text);
-	
 }
 
 void Dialogue::updateDialogue(std::string line)

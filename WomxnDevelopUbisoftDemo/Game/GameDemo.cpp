@@ -9,42 +9,36 @@ GameDemo::GameDemo()
     m_CurrentState = Gamestate::Menu;
     m_Menu.playMusic();
     m_CurrentWorld = &m_World;
+    
 
 }
 
 void GameDemo::update(float deltaTime)
 {
     
+    
    switch (m_CurrentState)
    {
 
     case Gamestate::Gameplay:
     {
-
         m_MainCharacter.update(deltaTime);
-        
 
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::M))
         {
             m_CurrentState = Gamestate::Menu;
         }
 
-
- 
-        if (m_MainCharacter.GetBoundingBox().intersects(m_World.rect1.getGlobalBounds()))
+        if (m_MainCharacter.GetBoundingBox().intersects(m_World.buildingRect.getGlobalBounds()))
         {
-  
                 m_CurrentWorld->createWorld("level2");
                 m_MainCharacter.resetPosition(sf::Vector2f(40.0f, 400.0f));
                 level2 = true;
                 m_World.playBuildingMusic();
-                m_Menu.stopMusic();
-            
-           
-            
+                m_Menu.stopMusic();  
         }
 
-        if (m_MainCharacter.GetBoundingBox().intersects(m_World.rect2.getGlobalBounds()))
+        if (m_MainCharacter.GetBoundingBox().intersects(m_World.treeRect.getGlobalBounds()))
         {
             m_CurrentState = Gamestate::Dialogue;
         }
@@ -76,10 +70,9 @@ void GameDemo::update(float deltaTime)
     { 
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
         {
-   
-
             m_MainCharacter.resetPosition(sf::Vector2f(520.0f,360.0f));
             m_CurrentState = Gamestate::Gameplay;
+
             if (endGame == true)
             {
                 m_World.updateTree();
@@ -137,14 +130,12 @@ void GameDemo::render(sf::RenderTarget& target)
       
          target.draw(m_World);
          target.draw(m_MainCharacter);
-        
-         
+  
     }
     if (m_CurrentState == Gamestate::Endgame)
     {
         target.draw(m_World);
         target.draw(m_Endgame);
-
     }
     if (m_CurrentState == Gamestate::Dialogue)
     {

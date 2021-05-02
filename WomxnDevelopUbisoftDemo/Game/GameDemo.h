@@ -22,8 +22,6 @@ public:
     enum class Gamestate{ Menu, Gameplay, Dialogue, Endgame};
 
 
-    
-
 private:
 
     MainMenu m_Menu;

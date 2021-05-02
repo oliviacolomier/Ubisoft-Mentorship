@@ -19,9 +19,9 @@ public:
 
 
 	//make private with accessors
-	sf::RectangleShape rect1;
-	sf::RectangleShape rect2;
-	sf::RectangleShape rect3;
+	sf::RectangleShape buildingRect;
+	sf::RectangleShape treeRect; //tree rec
+	sf::RectangleShape rect3; //door rect
 	sf::RectangleShape waterRect;
 
 private:
@@ -36,9 +36,9 @@ private:
 	sf::Sprite m_Door;
 
 
-	sf::Texture m_Texture;
-	sf::Texture m_Texture2;
-	sf::Texture m_Texture3;
+	sf::Texture m_TreeTexture;
+	sf::Texture m_WaterTexture;
+	sf::Texture m_DoorTexture;
 	sf::Vector2f m_Position;
 	sf::Vector2f m_MoveOffScreen;
 	sf::Music m_BuildingMusic;

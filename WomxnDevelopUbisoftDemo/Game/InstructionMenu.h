@@ -13,7 +13,6 @@ private:
 	sf::Text m_Text;
 	sf::Font m_Font;
 
-	
-
+	sf::RectangleShape m_TextRect;
 };
 

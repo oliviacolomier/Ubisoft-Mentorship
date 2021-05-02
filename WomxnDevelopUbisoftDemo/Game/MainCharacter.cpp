@@ -24,6 +24,7 @@ void MainCharacter::update(float deltaTime)
     const float DEAD_ZONE = 5.0f;
     const float SLOWDOWN_RATE = 0.5f;
 
+
    if (Keyboard::isKeyPressed(Keyboard::D))
       {
             updateFrameCounter();

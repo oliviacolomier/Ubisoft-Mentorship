@@ -16,6 +16,7 @@ private:
 	sf::Text m_Text2;
 	sf::Font m_Font;
 	sf::Music m_Music;
+	sf::RectangleShape m_TextRect;
 
 };
 

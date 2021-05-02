@@ -8,6 +8,13 @@ MainMenu::MainMenu()
 	m_Texture.loadFromFile(".\\Assets\\menu_background.jpg");
 	menuBackground.setTexture(m_Texture);
 	menuBackground.setScale(0.6f, 0.6f);
+	
+	m_TextRect.setFillColor(sf::Color::White);
+	m_TextRect.setOutlineColor(sf::Color::Black);
+	m_TextRect.setOutlineThickness(5.0f);
+	m_TextRect.setSize(sf::Vector2f(500.0f, 100.0f));
+	m_TextRect.setPosition(sf::Vector2f(150.0f, 250.0f));
+	
 	m_Text.setFont(m_Font);
 	m_Text.setPosition(225.0f, 250.0f);
 	m_Text.setCharacterSize(50.0f);
@@ -32,8 +39,10 @@ MainMenu::MainMenu()
 void MainMenu::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
 	target.draw(menuBackground);
+	target.draw(m_TextRect);
 	target.draw(m_Text);
 	target.draw(m_Text2);
+	
 	
 }
 

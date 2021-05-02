@@ -8,7 +8,7 @@ EndGame::EndGame()
 	m_Text.setPosition(50.0f, 250.0f);
 	m_Text.setCharacterSize(50.0f);
 	m_Text.setString("You finished the game!");
-	m_Text.setFillColor(sf::Color::Red);
+	m_Text.setFillColor(sf::Color::Black);
 	m_Text.setStyle(sf::Text::Bold);
 
 }
