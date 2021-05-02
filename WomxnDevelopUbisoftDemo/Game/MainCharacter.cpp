@@ -4,7 +4,7 @@
 using namespace sf;
 
 MainCharacter::MainCharacter()
-    : m_Position(400.0f, 300.0f)
+    : m_Position(50.0f, 500.0f)
 {
     m_Texture.loadFromFile(".\\Assets\\tiger.gif");
     m_Sprite.setTexture(m_Texture);

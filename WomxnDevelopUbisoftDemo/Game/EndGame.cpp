@@ -3,9 +3,9 @@
 
 EndGame::EndGame()
 {
-	m_Font.loadFromFile(".\\Assets\\BunnyBaby.otf");
+	m_Font.loadFromFile(".\\Assets\\CaviarDreams.ttf");
 	m_Text.setFont(m_Font);
-	m_Text.setPosition(50.0f, 250.0f);
+	m_Text.setPosition(150.0f, 250.0f);
 	m_Text.setCharacterSize(50.0f);
 	m_Text.setString("You finished the game!");
 	m_Text.setFillColor(sf::Color::Black);

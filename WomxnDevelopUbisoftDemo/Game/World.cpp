@@ -28,6 +28,12 @@ World::World()
 	m_Tree.setPosition(m_Position);
 	m_Tree.setScale(-0.9f, 0.9f);
 
+	updatePosition(sf::Vector2f(27.0f,470.0f));
+	m_CaveTexture.loadFromFile(".\\Assets\\cave.png");
+	m_Cave.setTexture(m_CaveTexture);
+	m_Cave.setPosition(m_Position);
+	m_Cave.setScale(0.2f, 0.2f);
+
 	m_WaterTexture.loadFromFile(".\\Assets\\water.gif");
 	m_Water.setTexture(m_WaterTexture);
 	m_Water.setPosition(sf::Vector2f(100.0f,100.0f));
@@ -126,6 +132,7 @@ void World::createWorld(std::string worldName)
 		m_Torch.setPosition(110.0f, 3.0f);
 		m_Torch2.setPosition(570.0f, 3.0f);
 		m_Table.setPosition(705.0f, 340.0f);
+		m_Cave.setPosition(m_MoveOffScreen);
 
 		const int level2[] =
 		{
@@ -168,6 +175,8 @@ void World::createWorld(std::string worldName)
 		m_Torch.setPosition(m_MoveOffScreen);
 		m_Torch2.setPosition(m_MoveOffScreen);
 		m_Table.setPosition(m_MoveOffScreen);
+		m_Cave.setPosition(27.0f, 470.0f);
+		
 
 		const int level[] =
 		{
@@ -227,6 +236,7 @@ void World::draw(sf::RenderTarget& target, sf::RenderStates states) const
 	target.draw(m_Door);
 	target.draw(m_Torch);
 	target.draw(m_Torch2);
+	target.draw(m_Cave);
 
 	
 	if (newTree == true)

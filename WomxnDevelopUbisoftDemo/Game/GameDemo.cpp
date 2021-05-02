@@ -2,7 +2,7 @@
 #include "GameDemo.h"
 
 GameDemo::GameDemo()
-    : Game{ "Game Demo" }
+    : Game{ "The Tree" }
     , m_MainCharacter{}
 
 {
@@ -16,8 +16,7 @@ GameDemo::GameDemo()
 
 void GameDemo::update(float deltaTime)
 {
-    
-
+   
    switch (m_CurrentState)
    {
 
@@ -52,7 +51,7 @@ void GameDemo::update(float deltaTime)
                 m_World.treeResetPositon(sf::Vector2f(650.0f, 320.0f));
                 m_World.treeRectResetPoisiton(sf::Vector2f(550.0f, 320.0f));
                 m_MainCharacter.resetPosition(sf::Vector2f(70.0f, 30.0f));
-                m_Dialogue.updateDialogue("Thank you for the water. Have a good day.");
+                m_Dialogue.updateDialogue("Thank you for the water. I feel REBORN. \n You are always welcome in my part of the jungle. \n Have a good day.");
                 m_World.stopBuildingMusic();
                 m_Menu.playMusic();
             }
@@ -105,7 +104,6 @@ void GameDemo::update(float deltaTime)
         {
             m_MainCharacter.resetPosition(sf::Vector2f(400.0f,300.0f));
             m_CurrentState = Gamestate::Menu;
-
         }
 
         break;

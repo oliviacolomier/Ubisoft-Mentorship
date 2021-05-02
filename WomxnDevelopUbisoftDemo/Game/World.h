@@ -34,15 +34,14 @@ private:
 	sf::Sprite m_Torch;
 	sf::Sprite m_Torch2;
 	sf::Sprite m_Table;
-
+	sf::Sprite m_Cave;
 
 	sf::Texture m_TreeTexture;
 	sf::Texture m_WaterTexture;
 	sf::Texture m_DoorTexture;
 	sf::Texture m_TorchTexture;
 	sf::Texture m_TableTexture;
-
-
+	sf::Texture m_CaveTexture;
 
 	sf::Vector2f m_Position;
 	sf::Vector2f m_MoveOffScreen;
