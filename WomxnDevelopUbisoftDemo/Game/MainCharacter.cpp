@@ -13,7 +13,8 @@ MainCharacter::MainCharacter()
 
     m_Source = sf::Vector2u(48, Down);
     m_WaterTexture.loadFromFile(".\\Assets\\tiger_blue.gif");
-    SetBoundingBox(50.0f,50.0f,50.0f,50.0f);
+    
+    SetBoundingBox(10.0f, 10.0f, 20.0f, 20.0f);
 
     m_FrameCounter = 0;
     m_SwitchFrame = 100;

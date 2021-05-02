@@ -5,6 +5,8 @@ MainMenu::MainMenu()
 {
 
 	m_Font.loadFromFile(".\\Assets\\CaviarDreams.ttf");
+	m_TitleFont.loadFromFile(".\\Assets\\JungleTree.ttf");
+
 	m_Texture.loadFromFile(".\\Assets\\menu_background.jpg");
 	m_MenuBackground.setTexture(m_Texture);
 	m_MenuBackground.setScale(0.6f, 0.6f);
@@ -15,15 +17,22 @@ MainMenu::MainMenu()
 	m_TextRect.setSize(sf::Vector2f(500.0f, 500.0f));
 	m_TextRect.setPosition(sf::Vector2f(150.0f, 50.0f));
 	
-	m_Text.setFont(m_Font);
-	m_Text.setPosition(225.0f, 150.0f);
-	m_Text.setCharacterSize(50.0f);
-	m_Text.setString("Press 'P' to Play");
-	m_Text.setFillColor(sf::Color::Black);
-	m_Text.setStyle(sf::Text::Bold);
+	m_TitleText.setFont(m_TitleFont);
+	m_TitleText.setPosition(235.0f, 30.0f);
+	m_TitleText.setCharacterSize(150.0f);
+	m_TitleText.setString("The Tree");
+	m_TitleText.setFillColor(sf::Color::Black);
+	m_TitleText.setStyle(sf::Text::Bold);
+	
+	m_PlayText.setFont(m_Font);
+	m_PlayText.setPosition(300.0f, 200.0f);
+	m_PlayText.setCharacterSize(30.0f);
+	m_PlayText.setString("Press 'P' to Play");
+	m_PlayText.setFillColor(sf::Color::Black);
+	m_PlayText.setStyle(sf::Text::Bold);
 
 	m_InstructionText.setFont(m_Font);
-	m_InstructionText.setPosition(300.0f, 220.0f);
+	m_InstructionText.setPosition(300.0f, 250.0f);
 	m_InstructionText.setCharacterSize(20.0f);
 	m_InstructionText.setString("Press 'I' for instructions");
 	m_InstructionText.setFillColor(sf::Color::Black);
@@ -45,7 +54,8 @@ void MainMenu::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
 	target.draw(m_MenuBackground);
 	target.draw(m_TextRect);
-	target.draw(m_Text);
+	target.draw(m_TitleText);
+	target.draw(m_PlayText);
 	target.draw(m_InstructionText);
 	target.draw(m_StoryText);
 	

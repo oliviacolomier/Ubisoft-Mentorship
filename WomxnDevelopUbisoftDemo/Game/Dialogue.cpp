@@ -15,7 +15,7 @@ Dialogue::Dialogue()
 	m_Font.loadFromFile(".\\Assets\\arial.ttf");
 	m_Text.setFont(m_Font);
 	m_Text.setCharacterSize(20);
-	m_Text.setString("Hello Traveler. I am dying. \nThere is magical water in the building that can help.\n Alas, I am a tree and cannot walk. \nPerhaps you can retrieve it for me ? ");
+	m_Text.setString(" Hello Traveler. I am dying. \n There is magical water in that building \n that can save me. Alas, I am a tree and cannot walk. \n Perhaps you can retrieve it for me? ");
 	m_Text.setFillColor(sf::Color::Black);
 
 }

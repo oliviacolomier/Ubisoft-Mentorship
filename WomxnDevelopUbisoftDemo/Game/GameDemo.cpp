@@ -32,7 +32,7 @@ void GameDemo::update(float deltaTime)
         if (m_MainCharacter.GetBoundingBox().intersects(m_World.m_BuildingRect.getGlobalBounds()))
         {
                 m_CurrentWorld->createWorld("level2");
-                m_MainCharacter.resetPosition(sf::Vector2f(40.0f, 400.0f));
+                m_MainCharacter.resetPosition(sf::Vector2f(40.0f, 463.0f));
                 level2 = true;
                 m_World.playBuildingMusic();
                 m_Menu.stopMusic();  
@@ -51,7 +51,7 @@ void GameDemo::update(float deltaTime)
                 m_World.treeResetPositon(sf::Vector2f(650.0f, 320.0f));
                 m_World.treeRectResetPoisiton(sf::Vector2f(550.0f, 320.0f));
                 m_MainCharacter.resetPosition(sf::Vector2f(70.0f, 30.0f));
-                m_Dialogue.updateDialogue("Thank you for the water. I feel REBORN. \n You are always welcome in my part of the jungle. \n Have a good day.");
+                m_Dialogue.updateDialogue(" Thank you for the water. I feel REBORN. \n You are always welcome in my part of the jungle. \n Have a good day.");
                 m_World.stopBuildingMusic();
                 m_Menu.playMusic();
             }
@@ -74,7 +74,7 @@ void GameDemo::update(float deltaTime)
     { 
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
         {
-            m_MainCharacter.resetPosition(sf::Vector2f(520.0f,360.0f));
+            m_MainCharacter.resetPosition(sf::Vector2f(570.0f, 330.0f));
             m_CurrentState = Gamestate::Gameplay;
 
             if (endGame == true)

@@ -17,7 +17,7 @@ public:
 	void playBuildingMusic();
 	void stopBuildingMusic();
 
-	//make private with accessors
+	//make private?
 	sf::RectangleShape m_BuildingRect;
 	sf::RectangleShape m_TreeRect;
 	sf::RectangleShape m_DoorRect;
