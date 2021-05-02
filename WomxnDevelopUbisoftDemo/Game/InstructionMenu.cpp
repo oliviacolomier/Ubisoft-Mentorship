@@ -8,7 +8,6 @@ InstructionMenu::InstructionMenu()
 	m_Background.setTexture(m_Texture);
 	m_Background.setScale(0.6f, 0.6f);
 
-
 	m_TextRect.setFillColor(sf::Color::White);
 	m_TextRect.setOutlineColor(sf::Color::Black);
 	m_TextRect.setOutlineThickness(5.0f);
@@ -28,5 +27,6 @@ void InstructionMenu::draw(sf::RenderTarget& target, sf::RenderStates states) co
 	target.draw(m_Background);
 	target.draw(m_TextRect);
 	target.draw(m_Text);
-
 }
+
+

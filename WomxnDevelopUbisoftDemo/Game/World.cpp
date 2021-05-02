@@ -6,22 +6,22 @@ World::World()
 	m_MoveOffScreen = sf::Vector2f(-100.0f, -100.0f);
 
 	updatePosition(sf::Vector2f(70.0f, 30.0f));
-	buildingRect.setSize(sf::Vector2f(50.0f, 50.0f));
-	buildingRect.setFillColor(sf::Color::Red);
-	buildingRect.setPosition(m_Position);
+	m_BuildingRect.setSize(sf::Vector2f(50.0f, 50.0f));
+	m_BuildingRect.setFillColor(sf::Color::Red);
+	m_BuildingRect.setPosition(m_Position);
 
 	updatePosition(sf::Vector2f(650.0f, 350.0f));
-	treeRect.setSize(sf::Vector2f(50.0f, 50.0f));
-	treeRect.setFillColor(sf::Color::Blue);
-	treeRect.setPosition(sf::Vector2f(610.0f,325.0f));
+	m_TreeRect.setSize(sf::Vector2f(50.0f, 50.0f));
+	m_TreeRect.setFillColor(sf::Color::Blue);
+	m_TreeRect.setPosition(sf::Vector2f(610.0f,325.0f));
 	
 	updatePosition(sf::Vector2f(700.0f, 300.0f));
-	waterRect.setSize(sf::Vector2f(50.0f, 50.0f));
-	waterRect.setFillColor(sf::Color::Magenta);
-	waterRect.setPosition(sf::Vector2f(550.0f, 350.0f));
+	m_WaterRect.setSize(sf::Vector2f(50.0f, 50.0f));
+	m_WaterRect.setFillColor(sf::Color::Magenta);
+	m_WaterRect.setPosition(sf::Vector2f(550.0f, 350.0f));
 
-	rect3.setSize(sf::Vector2f(50.0f, 50.0f));
-	rect3.setFillColor(sf::Color::Green);
+	m_DoorRect.setSize(sf::Vector2f(50.0f, 50.0f));
+	m_DoorRect.setFillColor(sf::Color::Green);
 	
 	m_TreeTexture.loadFromFile(".\\Assets\\tree.gif");
 	m_Tree.setTexture(m_TreeTexture);
@@ -38,6 +38,17 @@ World::World()
 	m_Door.setPosition(m_MoveOffScreen);
 	m_Door.setScale(0.1f, 0.1f);
 
+	
+	m_TorchTexture.loadFromFile(".\\Assets\\torch.gif");
+	m_Torch.setTexture(m_TorchTexture);
+	m_Torch.setScale(0.2f, 0.2f);
+	m_Torch2.setTexture(m_TorchTexture);
+	m_Torch2.setScale(0.2f, 0.2f);
+
+
+	m_TableTexture.loadFromFile(".\\Assets\\table.gif");
+	m_Table.setTexture(m_TableTexture);
+	m_Table.setScale(0.1f, 0.1f);
 
 	createWorld("level1");
 
@@ -106,13 +117,15 @@ void World::createWorld(std::string worldName)
 	if (worldName == "level2") 
 	{
 		
-		buildingRect.setPosition(m_MoveOffScreen);
-		treeRect.setPosition(m_MoveOffScreen);
-		rect3.setPosition(30.0f, 520.0f);
+		m_BuildingRect.setPosition(m_MoveOffScreen);
+		m_TreeRect.setPosition(m_MoveOffScreen);
+		m_DoorRect.setPosition(30.0f, 520.0f);
 		m_Tree.setPosition(m_MoveOffScreen);
 		m_Water.setPosition(700.0f, 300.0f);
-		waterRect.setPosition(700.0f,300.0f);
-		
+		m_WaterRect.setPosition(700.0f,300.0f);
+		m_Torch.setPosition(110.0f, 3.0f);
+		m_Torch2.setPosition(570.0f, 3.0f);
+		m_Table.setPosition(705.0f, 340.0f);
 
 		const int level2[] =
 		{
@@ -149,10 +162,12 @@ void World::createWorld(std::string worldName)
 	}
 	else
 	{
-		rect3.setPosition(m_MoveOffScreen);
+		m_DoorRect.setPosition(m_MoveOffScreen);
 		m_Water.setPosition(m_MoveOffScreen);
-		waterRect.setPosition(m_MoveOffScreen);
-		
+		m_WaterRect.setPosition(m_MoveOffScreen);
+		m_Torch.setPosition(m_MoveOffScreen);
+		m_Torch2.setPosition(m_MoveOffScreen);
+		m_Table.setPosition(m_MoveOffScreen);
 
 		const int level[] =
 		{
@@ -192,8 +207,10 @@ void World::updatePosition(sf::Vector2f newPosition)
 void World::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
 	
-	target.draw(waterRect);
-	
+	target.draw(m_WaterRect);
+	target.draw(m_BuildingRect);
+	target.draw(m_TreeRect);
+	target.draw(m_DoorRect);
 
 	//apply the transform
 	states.transform *= getTransform();
@@ -205,21 +222,17 @@ void World::draw(sf::RenderTarget& target, sf::RenderStates states) const
 	target.draw(m_Vertices, states);
 
 	target.draw(m_Tree);
+	target.draw(m_Table);
 	target.draw(m_Water);
 	target.draw(m_Door);
-	
-	target.draw(buildingRect);
-	target.draw(treeRect);
-	target.draw(rect3);
-	
+	target.draw(m_Torch);
+	target.draw(m_Torch2);
 
-
+	
 	if (newTree == true)
 	{
 		target.draw(m_HealthyTree);
 	}
-
-
 
 }
 void World::treeResetPositon(sf::Vector2f position)
@@ -229,7 +242,7 @@ void World::treeResetPositon(sf::Vector2f position)
 
 void World::treeRectResetPoisiton(sf::Vector2f position)
 {
-	treeRect.setPosition(position);
+	m_TreeRect.setPosition(position);
 }
 void World::waterResetPosition(sf::Vector2f position)
 {
@@ -257,6 +270,8 @@ void World::stopBuildingMusic()
 {
 	m_BuildingMusic.stop();
 }
+
+
 
 
 

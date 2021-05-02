@@ -35,6 +35,7 @@ private:
 
     bool level2;
     bool endGame;
+    bool gotWater;
 
 
 };

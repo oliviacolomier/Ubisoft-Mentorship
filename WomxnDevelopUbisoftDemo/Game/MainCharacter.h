@@ -18,15 +18,14 @@ private:
 
 	enum Direction{Down, Left, Right, Up};
 
-	float m_FrameCounter = 0, m_SwitchFrame = 100, m_FrameSpeed = 500;
+	float m_FrameCounter, m_SwitchFrame, m_FrameSpeed;
 
 	sf::Texture m_Texture;
 	sf::Texture m_WaterTexture;
 	sf::Sprite m_Sprite;
 	sf::Clock m_Clock;
 
-
-	sf::Vector2u source = sf::Vector2u(48, Down);
+	sf::Vector2u m_Source;
 	sf::Vector2f m_Position; 
 	sf::Vector2f m_Velocity;
 

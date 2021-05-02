@@ -11,9 +11,13 @@ MainCharacter::MainCharacter()
     m_Sprite.setPosition(m_Position);
     m_Sprite.setScale(0.9f, 0.9f);
 
+    m_Source = sf::Vector2u(48, Down);
     m_WaterTexture.loadFromFile(".\\Assets\\tiger_blue.gif");
-  
     SetBoundingBox(50.0f,50.0f,50.0f,50.0f);
+
+    m_FrameCounter = 0;
+    m_SwitchFrame = 100;
+    m_FrameSpeed = 500;
 }
 
 
@@ -28,14 +32,14 @@ void MainCharacter::update(float deltaTime)
    if (Keyboard::isKeyPressed(Keyboard::D))
       {
             updateFrameCounter();
-            source.y = Right;
+            m_Source.y = Right;
             m_Velocity.x = fmin(m_Velocity.x + SPEED_INC, SPEED_MAX);
     
       }
 
    else if (Keyboard::isKeyPressed(Keyboard::A))
       {
-            source.y = Left;
+            m_Source.y = Left;
             m_Velocity.x = fmax(m_Velocity.x - SPEED_INC, -SPEED_MAX);
             updateFrameCounter();
       }
@@ -47,14 +51,14 @@ void MainCharacter::update(float deltaTime)
 
    if (Keyboard::isKeyPressed(Keyboard::S))
       {
-            source.y = Down;
+            m_Source.y = Down;
             m_Velocity.y = fmin(m_Velocity.y + SPEED_INC, SPEED_MAX);
             updateFrameCounter();
       }
 
    else if (Keyboard::isKeyPressed(Keyboard::W))
       {
-            source.y = Up;
+            m_Source.y = Up;
             m_Velocity.y = fmax(m_Velocity.y - SPEED_INC, -SPEED_MAX);
             updateFrameCounter();
       }
@@ -64,13 +68,13 @@ void MainCharacter::update(float deltaTime)
             m_Velocity.y *= SLOWDOWN_RATE;
       }
      
-    m_Sprite.setTextureRect(sf::IntRect(source.x * 48, source.y * 50, 48, 48));
+    m_Sprite.setTextureRect(sf::IntRect(m_Source.x * 48, m_Source.y * 50, 48, 48));
     m_Position += m_Velocity * deltaTime;
     m_Sprite.setPosition(m_Position);
     SetCenter(m_Position);
 
 //Window Collision
-// 
+
     //Left Collision
     if (m_Sprite.getPosition().x < 0.f)
         m_Sprite.setPosition(0, m_Sprite.getPosition().y);
@@ -98,9 +102,9 @@ void MainCharacter::updateFrameCounter()
     if (m_FrameCounter >= m_SwitchFrame)
     {
         m_FrameCounter = 0;
-        source.x++;
-        if (source.x * 48 >= m_Texture.getSize().x)
-            source.x = 0;
+        m_Source.x++;
+        if (m_Source.x * 48 >= m_Texture.getSize().x)
+            m_Source.x = 0;
     }
 }
 

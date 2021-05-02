@@ -6,8 +6,8 @@ MainMenu::MainMenu()
 
 	m_Font.loadFromFile(".\\Assets\\BunnyBaby.otf");
 	m_Texture.loadFromFile(".\\Assets\\menu_background.jpg");
-	menuBackground.setTexture(m_Texture);
-	menuBackground.setScale(0.6f, 0.6f);
+	m_MenuBackground.setTexture(m_Texture);
+	m_MenuBackground.setScale(0.6f, 0.6f);
 	
 	m_TextRect.setFillColor(sf::Color::White);
 	m_TextRect.setOutlineColor(sf::Color::Black);
@@ -38,7 +38,7 @@ MainMenu::MainMenu()
 
 void MainMenu::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
-	target.draw(menuBackground);
+	target.draw(m_MenuBackground);
 	target.draw(m_TextRect);
 	target.draw(m_Text);
 	target.draw(m_Text2);

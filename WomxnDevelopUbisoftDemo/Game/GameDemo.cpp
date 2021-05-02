@@ -9,14 +9,15 @@ GameDemo::GameDemo()
     m_CurrentState = Gamestate::Menu;
     m_Menu.playMusic();
     m_CurrentWorld = &m_World;
-    
-
+    level2 = false;
+    endGame = false;
+    gotWater = false;
 }
 
 void GameDemo::update(float deltaTime)
 {
     
-    
+
    switch (m_CurrentState)
    {
 
@@ -29,7 +30,7 @@ void GameDemo::update(float deltaTime)
             m_CurrentState = Gamestate::Menu;
         }
 
-        if (m_MainCharacter.GetBoundingBox().intersects(m_World.buildingRect.getGlobalBounds()))
+        if (m_MainCharacter.GetBoundingBox().intersects(m_World.m_BuildingRect.getGlobalBounds()))
         {
                 m_CurrentWorld->createWorld("level2");
                 m_MainCharacter.resetPosition(sf::Vector2f(40.0f, 400.0f));
@@ -38,29 +39,33 @@ void GameDemo::update(float deltaTime)
                 m_Menu.stopMusic();  
         }
 
-        if (m_MainCharacter.GetBoundingBox().intersects(m_World.treeRect.getGlobalBounds()))
+        if (m_MainCharacter.GetBoundingBox().intersects(m_World.m_TreeRect.getGlobalBounds()))
         {
             m_CurrentState = Gamestate::Dialogue;
         }
 
-        if (m_MainCharacter.GetBoundingBox().intersects(m_World.rect3.getGlobalBounds()))
+        if (m_MainCharacter.GetBoundingBox().intersects(m_World.m_DoorRect.getGlobalBounds()))
         {
-            m_CurrentWorld->createWorld("level1");
-            m_World.treeResetPositon(sf::Vector2f(650.0f, 320.0f));
-            m_World.treeRectResetPoisiton(sf::Vector2f(550.0f, 320.0f));
-            m_MainCharacter.resetPosition(sf::Vector2f(70.0f, 30.0f));
-            m_Dialogue.updateDialogue("Thank you for the water. Have a good day.");
-            m_World.stopBuildingMusic();
-            m_Menu.playMusic();
-
+            if (gotWater == true)
+            {
+                m_CurrentWorld->createWorld("level1");
+                m_World.treeResetPositon(sf::Vector2f(650.0f, 320.0f));
+                m_World.treeRectResetPoisiton(sf::Vector2f(550.0f, 320.0f));
+                m_MainCharacter.resetPosition(sf::Vector2f(70.0f, 30.0f));
+                m_Dialogue.updateDialogue("Thank you for the water. Have a good day.");
+                m_World.stopBuildingMusic();
+                m_Menu.playMusic();
+            }
+  
             level2 = false;
             endGame = true;
 
         }
-        if (m_MainCharacter.GetBoundingBox().intersects(m_World.waterRect.getGlobalBounds()))
+        if (m_MainCharacter.GetBoundingBox().intersects(m_World.m_WaterRect.getGlobalBounds()))
         {
             m_World.waterResetPosition(sf::Vector2f(-100.0f,-100.0f));
             m_MainCharacter.updateCharacterTexture();
+            gotWater = true;
         }
 
         break;

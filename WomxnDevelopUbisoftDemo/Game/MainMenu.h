@@ -10,7 +10,7 @@ public:
 
 private:
 
-	sf::Sprite menuBackground;
+	sf::Sprite m_MenuBackground;
 	sf::Texture m_Texture;
 	sf::Text m_Text;
 	sf::Text m_Text2;
