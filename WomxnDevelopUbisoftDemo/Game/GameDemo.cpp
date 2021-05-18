@@ -2,57 +2,154 @@
 #include "GameDemo.h"
 
 GameDemo::GameDemo()
-    : Game{ "Game Demo" }
-    , m_Door{ 900, 600, 100, 200 }
+    : Game{ "The Tree" }
     , m_MainCharacter{}
-    , m_IsFinished{ false }
+
 {
-    m_EndgameTextFont.loadFromFile("Assets\\arial.ttf");
-
-    m_EndgameText.setFont(m_EndgameTextFont);
-    m_EndgameText.setPosition(500, 400);
-    m_EndgameText.setString("!!! WIN !!!");
-    m_EndgameText.setCharacterSize(24);
-    m_EndgameText.setFillColor(sf::Color::Red);
-
-    m_EndgameSoundBuffer.loadFromFile("Assets\\Test.wav");
-
-    m_EndgameSound.setBuffer(m_EndgameSoundBuffer);
+    m_CurrentState = Gamestate::Menu;
+    m_Menu.playMusic();
+    m_CurrentWorld = &m_World;
+    level2 = false;
+    endGame = false;
+    gotWater = false;
 }
 
-void GameDemo::Update(float deltaTime)
+void GameDemo::update(float deltaTime)
 {
-    m_MainCharacter.Update(deltaTime);
-    m_Door.Update(deltaTime);
+   
+   switch (m_CurrentState)
+   {
 
-    if (!m_IsFinished)
+    case Gamestate::Gameplay:
     {
-        //if (m_Door.IsColliding(m_MainCharacter))
-        //if (m_Door.Contains(m_MainCharacter.GetCenter()))
-        if (m_Door.Contains(m_MainCharacter))
-        {
-            m_EndgameSound.play();
+        m_MainCharacter.update(deltaTime);
 
-            m_MainCharacter.StartEndGame();
-            m_Door.StartEndGame();
-            m_IsFinished = true;
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::M))
+        {
+            m_CurrentState = Gamestate::Menu;
         }
+
+        if (m_MainCharacter.GetBoundingBox().intersects(m_World.m_BuildingRect.getGlobalBounds()))
+        {
+                m_CurrentWorld->createWorld("level2");
+                m_MainCharacter.resetPosition(sf::Vector2f(40.0f, 463.0f));
+                level2 = true;
+                m_World.playBuildingMusic();
+                m_Menu.stopMusic();  
+        }
+
+        if (m_MainCharacter.GetBoundingBox().intersects(m_World.m_TreeRect.getGlobalBounds()))
+        {
+            m_CurrentState = Gamestate::Dialogue;
+        }
+
+        if (m_MainCharacter.GetBoundingBox().intersects(m_World.m_DoorRect.getGlobalBounds()))
+        {
+            if (gotWater == true)
+            {
+                m_CurrentWorld->createWorld("level1");
+                m_World.treeResetPositon(sf::Vector2f(650.0f, 320.0f));
+                m_World.treeRectResetPoisiton(sf::Vector2f(550.0f, 320.0f));
+                m_MainCharacter.resetPosition(sf::Vector2f(70.0f, 30.0f));
+                m_Dialogue.updateDialogue(" Thank you for the water. I feel REBORN. \n You are always welcome in my part of the jungle. \n Have a good day.");
+                m_World.stopBuildingMusic();
+                m_Menu.playMusic();
+            }
+  
+            level2 = false;
+            endGame = true;
+
+        }
+        if (m_MainCharacter.GetBoundingBox().intersects(m_World.m_WaterRect.getGlobalBounds()))
+        {
+            m_World.waterResetPosition(sf::Vector2f(-100.0f,-100.0f));
+            m_MainCharacter.updateCharacterTexture();
+            gotWater = true;
+        }
+
+        break;
     }
+
+    case Gamestate::Dialogue:
+    { 
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
+        {
+            m_MainCharacter.resetPosition(sf::Vector2f(570.0f, 330.0f));
+            m_CurrentState = Gamestate::Gameplay;
+
+            if (endGame == true)
+            {
+                m_World.updateTree();
+                m_CurrentState = Gamestate::Endgame;
+            }
+        }
+
+        break;
+    }
+
+    case Gamestate::Menu:
+    {
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::P))
+        {
+            m_CurrentState = Gamestate::Gameplay;
+        }
+        
+        break;
+    }
+
+    case Gamestate::Endgame:
+    {
+
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter))
+        {
+            m_MainCharacter.resetPosition(sf::Vector2f(400.0f,300.0f));
+            m_CurrentState = Gamestate::Menu;
+        }
+
+        break;
+
+    }
+  
+   }
+    
 }
 
-void GameDemo::Render(sf::RenderTarget& target)
+void GameDemo::render(sf::RenderTarget& target)
 {
     target.clear(sf::Color(0, 0, 0));
-    target.draw(m_Door);
-    target.draw(m_MainCharacter);
 
-    if (m_IsFinished)
+    if (m_CurrentState == Gamestate::Menu)
     {
-        target.draw(m_EndgameText);
+ 
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::I))
+        {
+            target.draw(m_Instruction);
+        }
+        else
+            target.draw(m_Menu);
     }
+    if(m_CurrentState == Gamestate::Gameplay)
+    {
+      
+         target.draw(m_World);
+         target.draw(m_MainCharacter);
+  
+    }
+    if (m_CurrentState == Gamestate::Endgame)
+    {
+        target.draw(m_World);
+        target.draw(m_Endgame);
+    }
+    if (m_CurrentState == Gamestate::Dialogue)
+    {
+        target.draw(m_World);
+        target.draw(m_MainCharacter);
+        target.draw(m_Dialogue);
+    }
+
 }
 
-void GameDemo::RenderDebugMenu(sf::RenderTarget& target)
+void GameDemo::renderDebugMenu(sf::RenderTarget& target)
 {
     ImGui::Begin("Debug Menu");
     ImGui::Text("Press F1 to close this debug menu");
@@ -64,18 +161,6 @@ void GameDemo::RenderDebugMenu(sf::RenderTarget& target)
 
         ImGui::Text("X: %f", mainCharCenterPos.x);
         ImGui::Text("Y: %f", mainCharCenterPos.y);
-    }
-
-    if (ImGui::CollapsingHeader("Game status"))
-    {
-        if (m_IsFinished)
-        {
-            ImGui::TextColored(ImVec4(255.f, 0.f, 0.f, 1.f), "GAME ENDED");
-        }
-        else
-        {
-            ImGui::TextColored(ImVec4(0.f, 255.0f, 0.f, 1.f), "GAME IN PROGRESS");
-        }
     }
 
     ImGui::End();

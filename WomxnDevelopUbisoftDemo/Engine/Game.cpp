@@ -3,7 +3,7 @@
 
 
 static constexpr float APP_MAX_FRAMERATE{ 60.0f };
-static const sf::Vector2u APP_INIT_WINDOW_SIZE{ 1024, 768 };
+static const sf::Vector2u APP_INIT_WINDOW_SIZE{ 800, 600};
 
 Game::Game(const char* windowTitle)
     : m_Window{ sf::VideoMode(APP_INIT_WINDOW_SIZE.x, APP_INIT_WINDOW_SIZE.y), windowTitle, sf::Style::Titlebar | sf::Style::Close }
@@ -12,6 +12,7 @@ Game::Game(const char* windowTitle)
     m_Window.setFramerateLimit(static_cast<uint32_t>(APP_MAX_FRAMERATE));
     m_Window.setActive();
     ImGui::SFML::Init(m_Window);
+    
 }
 
 Game::~Game()
@@ -19,8 +20,9 @@ Game::~Game()
     ImGui::SFML::Shutdown();
 }
 
-void Game::RunGameLoop()
+void Game::runGameLoop()
 {
+    
     float deltaTime{ 1.0f / APP_MAX_FRAMERATE };
     sf::Clock clock;
 
@@ -62,10 +64,9 @@ void Game::RunGameLoop()
         }
 
         ImGui::SFML::Update(m_Window, clock.restart());
-
-        Update(deltaTime);
-        Render(m_Window);
-        RenderDebugMenu(m_Window);
+        update(deltaTime);
+        render(m_Window);
+        renderDebugMenu(m_Window);
 
         ImGui::EndFrame();
         if (toggleImGui)

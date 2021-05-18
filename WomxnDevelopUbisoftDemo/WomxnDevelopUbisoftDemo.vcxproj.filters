@@ -23,9 +23,6 @@
     <ClCompile Include="Game\MainCharacter.cpp">
       <Filter>Game</Filter>
     </ClCompile>
-    <ClCompile Include="Game\Door.cpp">
-      <Filter>Game</Filter>
-    </ClCompile>
     <ClCompile Include="Engine\Game.cpp">
       <Filter>Game\Engine</Filter>
     </ClCompile>
@@ -34,6 +31,21 @@
     </ClCompile>
     <ClCompile Include="Engine\Collision.cpp">
       <Filter>Game\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\InstructionMenu.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\MainMenu.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Dialogue.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\EndGame.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\World.cpp">
+      <Filter>Game</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -50,9 +62,6 @@
     <ClInclude Include="Game\MainCharacter.h">
       <Filter>Game</Filter>
     </ClInclude>
-    <ClInclude Include="Game\Door.h">
-      <Filter>Game</Filter>
-    </ClInclude>
     <ClInclude Include="Engine\Game.h">
       <Filter>Game\Engine</Filter>
     </ClInclude>
@@ -61,6 +70,21 @@
     </ClInclude>
     <ClInclude Include="Engine\Collision.h">
       <Filter>Game\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\World.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\MainMenu.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\EndGame.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\InstructionMenu.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Dialogue.h">
+      <Filter>Game</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

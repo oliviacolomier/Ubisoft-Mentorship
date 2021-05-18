@@ -6,12 +6,12 @@ public:
     Game(const char* windowTitle);
     virtual ~Game();
 
-    void RunGameLoop();
+    void runGameLoop();
 
 protected:
-    virtual void Update(float deltaTime) = 0;
-    virtual void Render(sf::RenderTarget& target) = 0;
-    virtual void RenderDebugMenu(sf::RenderTarget& target) = 0;
+    virtual void update(float deltaTime) = 0;
+    virtual void render(sf::RenderTarget& target) = 0;
+    virtual void renderDebugMenu(sf::RenderTarget& target) = 0;
 
 private:
     sf::RenderWindow m_Window;

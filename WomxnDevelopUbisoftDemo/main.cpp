@@ -4,8 +4,9 @@
 
 int main()
 {
+
     GameDemo game{};
-    game.RunGameLoop();
+    game.runGameLoop();
 
     return EXIT_SUCCESS;
 }
