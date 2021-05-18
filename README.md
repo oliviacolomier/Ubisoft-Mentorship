@@ -10,6 +10,9 @@ For my game I decided to take a story driven approach that incorporates a mini p
 My main focus while programming was using State Machines. The project includes four main states: Menu, Gameplay, Dialogue, and EndGame. Some updates I would like to add in the future include importing the dialogue from a.txt file and cleaning up the collision.
 
 
-https://user-images.githubusercontent.com/51862620/118662101-bd720400-b7bd-11eb-96be-b9abea62a375.mp4
+
+https://user-images.githubusercontent.com/51862620/118662685-33766b00-b7be-11eb-9e54-c27e509e1724.mp4
+
+
 
 
